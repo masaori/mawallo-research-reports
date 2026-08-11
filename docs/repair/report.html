@@ -15,6 +15,9 @@
   .kicker { margin:0 0 10px; color:#d6e6df; font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
   h1 { max-width:850px; margin:0; font-family:Georgia,"Yu Mincho",serif; font-size:clamp(2rem,5vw,4.15rem); line-height:1.13; letter-spacing:-.03em; }
   .hero p:last-child { max-width:760px; margin:22px 0 0; color:#e4ede9; font-size:1.02rem; }
+  .report-tabs { position:sticky; top:0; z-index:6; display:flex; gap:8px; padding:12px max(20px,calc((100vw - 1080px)/2)); background:rgba(245,244,239,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+  .report-tabs a { padding:9px 14px; border:1px solid #bfc8c2; border-radius:9px; background:#fff; color:var(--ink); font-size:.88rem; font-weight:750; text-decoration:none; }
+  .report-tabs a[aria-current="page"] { color:#fff; border-color:var(--good); background:var(--good); }
   main { padding:34px 0 80px; }
   .scope { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; padding:24px; background:var(--card); border:1px solid var(--line); border-radius:18px; box-shadow:0 12px 35px rgba(24,33,29,.06); }
   .scope h2 { margin:0 0 6px; font-size:1rem; }
@@ -24,7 +27,7 @@
   .total strong { display:block; font:700 1.55rem/1 Georgia,serif; }
   .total.good { color:var(--good); background:var(--good-bg); }
   .total.bad { color:var(--bad); background:var(--bad-bg); }
-  .tools { position:sticky; top:0; z-index:5; display:flex; gap:10px; align-items:center; margin:18px 0 54px; padding:10px; background:rgba(245,244,239,.92); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+  .tools { display:flex; gap:10px; align-items:center; margin:18px 0 54px; padding:10px; background:rgba(245,244,239,.92); border-bottom:1px solid var(--line); }
   .tools input { flex:1; min-width:160px; padding:12px 14px; border:1px solid #bfc8c2; border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
   button,.jump { padding:10px 13px; border:1px solid #bfc8c2; border-radius:10px; background:#fff; font:inherit; font-size:.88rem; cursor:pointer; text-decoration:none; }
   .outcome-section + .outcome-section { margin-top:78px; padding-top:10px; }
@@ -35,14 +38,13 @@
   .case-list { display:grid; gap:10px; }
   .case { background:var(--card); border:1px solid var(--line); border-radius:13px; overflow:hidden; }
   .case[open] { box-shadow:0 10px 30px rgba(24,33,29,.07); }
-  .case summary { display:grid; grid-template-columns:74px minmax(0,1fr) auto auto 18px; gap:10px; align-items:center; padding:17px 18px; cursor:pointer; list-style:none; }
+  .case summary { display:grid; grid-template-columns:74px minmax(0,1fr) auto 18px; gap:10px; align-items:center; padding:17px 18px; cursor:pointer; list-style:none; }
   .case summary::-webkit-details-marker { display:none; }
   .case-id { color:var(--muted); font:700 .75rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; }
   .case-title { font-weight:750; line-height:1.45; }
-  .status,.new { padding:3px 8px; border-radius:999px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+  .status { padding:3px 8px; border-radius:999px; font-size:.72rem; font-weight:800; white-space:nowrap; }
   .recovered .status { color:var(--good); background:var(--good-bg); }
   .not-recovered .status { color:var(--bad); background:var(--bad-bg); }
-  .new { color:#704f0a; background:#fff0c8; }
   .chevron { width:8px; height:8px; border-right:2px solid #7a847e; border-bottom:2px solid #7a847e; transform:rotate(45deg); transition:.2s; }
   .case[open] .chevron { transform:rotate(225deg); }
   .case-content { padding:4px 18px 22px 102px; border-top:1px solid #eef1ef; }
@@ -67,9 +69,8 @@
     .tools { flex-wrap:wrap; }
     .tools input { flex-basis:100%; }
     .case summary { grid-template-columns:64px minmax(0,1fr) 16px; }
-    .case summary .status,.case summary .new { grid-row:2; }
+    .case summary .status { grid-row:2; }
     .case summary .status { grid-column:2; justify-self:start; }
-    .case summary .new { grid-column:2; justify-self:end; }
     .chevron { grid-column:3; grid-row:1; }
     .case-content { padding-left:18px; }
     .case-meta { grid-template-columns:1fr; }
@@ -81,14 +82,18 @@
   <div class="hero-inner">
     <p class="kicker">Collected relationship stories</p>
     <h1>夫婦関係が回復した事例／<br>回復しなかった事例</h1>
-    <p>公開された当事者の語りを、結末が確認できる2群だけに分けた事例集。成功率や原因の分布ではなく、一件ごとの悪化・試行・結果を読むためのレポート。</p>
+    <p>関係の回復が確認できる53件と、未修復の継続・破綻・離婚が確認できる64件。</p>
   </div>
 </header>
+<nav class="report-tabs" aria-label="夫婦関係の悪化と修復">
+  <a href="report.html" aria-current="page">収集事例の一覧</a>
+  <a href="aggregate-report.html">分類集計</a>
+</nav>
 <main>
-  <aside class="scope" aria-label="このレポートの範囲">
+  <aside class="scope" aria-label="収録事例">
     <div>
-      <h2>数字は収録件数であり、回復率ではありません</h2>
-      <p>検索で集めた168件のうち、語り手が関係の改善を明記した53件と、未修復の継続・破綻・離婚を明記した64件を掲載。予防例、部分的改善、別居後の結末不明、現在進行中、情報不足の51件は判定せず除外しました。無作為抽出ではないため、構成比・成功率・原因分布は示しません。</p>
+      <h2>収録事例 117件</h2>
+      <p>関係の回復が確認できる53件と、未修復の継続・破綻・離婚が確認できる64件。</p>
     </div>
     <div class="totals" aria-label="掲載件数">
       <a class="total good" href="#recovered"><strong>53</strong>回復した</a>
@@ -97,11 +102,6 @@
   </aside>
   <nav class="tools" aria-label="事例の操作">
     <input id="search" type="search" placeholder="原因・行動・語り手・出典から検索" aria-label="事例を検索">
-    <a class="jump" href="../">資料一覧</a>
-    <a class="jump" href="../typologies/">理論・尺度</a>
-    <a class="jump" href="aggregate-report.html">集計レポート</a>
-    <a class="jump" href="#recovered">回復した事例</a>
-    <a class="jump" href="#not-recovered">回復しなかった事例</a>
     <button id="open-all" type="button">表示中を開く</button>
     <button id="close-all" type="button">閉じる</button>
   </nav>
@@ -962,7 +962,7 @@
   <summary>
     <span class="case-id">事例 161</span>
     <span class="case-title">娘の家族画をきっかけに家族療法を受け会話を取り戻した夫婦</span>
-    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="status">回復した</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -981,7 +981,7 @@
   <summary>
     <span class="case-id">事例 162</span>
     <span class="case-title">300万円の借金で別居し完済後に家を建てた夫婦</span>
-    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="status">回復した</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -1000,7 +1000,7 @@
   <summary>
     <span class="case-id">事例 163</span>
     <span class="case-title">心身が限界で実家へ戻り離婚の話し合いから関係を再構築</span>
-    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="status">回復した</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -1019,7 +1019,7 @@
   <summary>
     <span class="case-id">事例 164</span>
     <span class="case-title">ギャンブルと暴言で2年別居し自助グループを経て再同居</span>
-    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="status">回復した</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -2000,7 +2000,7 @@
   <summary>
     <span class="case-id">事例 165</span>
     <span class="case-title">回復した夫との再構築を望んだが別居後に離婚した元妻</span>
-    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="status">回復しなかった</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -2019,7 +2019,7 @@
   <summary>
     <span class="case-id">事例 166</span>
     <span class="case-title">再発時は離婚の誓約後に数百万円を借り再発し離婚</span>
-    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="status">回復しなかった</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -2038,7 +2038,7 @@
   <summary>
     <span class="case-id">事例 167</span>
     <span class="case-title">借金で離婚後に再婚したが再発し再び離婚</span>
-    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="status">回復しなかった</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -2057,7 +2057,7 @@
   <summary>
     <span class="case-id">事例 168</span>
     <span class="case-title">一度は再構築したが不倫相手と切れておらず離婚</span>
-    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="status">回復しなかった</span>
     <span class="chevron" aria-hidden="true"></span>
   </summary>
   <div class="case-content">
@@ -2074,7 +2074,7 @@
 </section>
   <p id="empty" class="empty">一致する事例はありません。</p>
 </main>
-<footer>各記録は夫婦の片側の自己申告または取材・自由回答を要約したもので、相手方による確認はありません。2026年8月11日再編集。</footer>
+<footer>各記録は夫婦の片側の自己申告または取材・自由回答を要約したもので、相手方による確認はありません。</footer>
 <script>
   document.querySelectorAll('.case-list').forEach((list) => {
     [...list.children]

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>夫婦関係の悪化・回復 集計レポート</title>
+<title>夫婦関係の悪化・回復 分類集計</title>
 <style>
   :root { color-scheme:light; --ink:#17201c; --muted:#68736d; --paper:#f4f3ee; --card:#fff; --line:#d8dfda; }
   * { box-sizing:border-box; }
@@ -16,8 +16,8 @@
   .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
   .hero-meta span { padding:7px 11px; border:1px solid rgba(255,255,255,.26); border-radius:999px; color:#eaf1ee; font-size:.84rem; }
   .axis-nav { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:8px; padding:12px max(20px,calc((100vw - 1180px)/2)); background:rgba(244,243,238,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
-  .axis-nav a { padding:7px 10px; border:1px solid #c8d0cb; border-radius:8px; background:#fff; color:var(--ink); font-size:.8rem; text-decoration:none; }
-  .axis-nav .report-link { margin-left:auto; color:#fff; border-color:#205947; background:#205947; }
+  .axis-nav a { padding:9px 14px; border:1px solid #c8d0cb; border-radius:9px; background:#fff; color:var(--ink); font-size:.88rem; font-weight:750; text-decoration:none; }
+  .axis-nav a[aria-current="page"] { color:#fff; border-color:#205947; background:#205947; }
   main { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; padding:46px 0 78px; }
   .group-title { grid-column:1/-1; display:flex; align-items:end; justify-content:space-between; margin-top:30px; padding-bottom:10px; border-bottom:2px solid var(--ink); }
   .group-title h2 { margin:0; font:700 clamp(1.6rem,3vw,2.5rem)/1.2 Georgia,"Yu Mincho",serif; }
@@ -56,7 +56,6 @@
     main { grid-template-columns:1fr; }
     .chart-card.wide,.group-title { grid-column:1; }
     .cause-grid { grid-template-columns:1fr; }
-    .axis-nav .report-link { margin-left:0; }
   }
   @media (max-width:560px) {
     .hero { padding-top:46px; }
@@ -70,12 +69,12 @@
 <header class="hero">
   <div class="hero-inner">
     <p class="eyebrow">Aggregate report</p>
-    <h1>夫婦関係の悪化・回復<br>集計レポート</h1>
+    <h1>夫婦関係の悪化・回復<br>分類集計</h1>
     <div class="hero-meta"><span>対象 117件</span><span>回復側 53件</span><span>非回復側 64件</span><span>1事例につき各軸1分類</span></div>
   </div>
 </header>
-<nav class="axis-nav" aria-label="集計軸">
-  <a href="../">資料一覧</a><a href="../typologies/">理論・尺度</a><a href="#all-causes">全体：悪化原因</a><a href="#recovered-causes">回復側：悪化原因</a><a href="#recovered-methods">回復側：きっかけ・手段</a><a href="#recovered-outcomes">回復側：結末</a><a href="#not-recovered-attempts">非回復側：試したこと</a><a href="#not-recovered-outcomes">非回復側：結末</a><a class="report-link" href="report.html">具体事例レポート</a>
+<nav class="axis-nav" aria-label="夫婦関係の悪化と修復">
+  <a href="report.html">収集事例の一覧</a><a href="aggregate-report.html" aria-current="page">分類集計</a>
 </nav>
 <main>
   <section id="all-causes" class="chart-card wide">
@@ -183,6 +182,6 @@
   </details>
   </section>
 </main>
-<footer>集計対象：具体事例レポートに収録した117件。</footer>
+<footer>対象：収集事例117件。</footer>
 </body>
 </html>
