@@ -1,0 +1,2108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夫婦関係が回復した事例／回復しなかった事例</title>
+<style>
+  :root { color-scheme: light; --ink:#18211d; --muted:#66706a; --line:#dce2de; --paper:#f5f4ef; --card:#fff; --good:#176b50; --good-bg:#e7f4ee; --bad:#9e3f35; --bad-bg:#fbece9; --accent:#d9a441; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif; line-height:1.78; }
+  a { color:inherit; text-decoration-color:#9da8a1; text-underline-offset:3px; }
+  .hero { padding:72px 24px 44px; background:linear-gradient(135deg,#143f32 0%,#1d5a47 58%,#80642e 100%); color:#fff; }
+  .hero-inner, main, footer { width:min(1080px,calc(100% - 40px)); margin-inline:auto; }
+  .kicker { margin:0 0 10px; color:#d6e6df; font-size:.8rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  h1 { max-width:850px; margin:0; font-family:Georgia,"Yu Mincho",serif; font-size:clamp(2rem,5vw,4.15rem); line-height:1.13; letter-spacing:-.03em; }
+  .hero p:last-child { max-width:760px; margin:22px 0 0; color:#e4ede9; font-size:1.02rem; }
+  main { padding:34px 0 80px; }
+  .scope { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; padding:24px; background:var(--card); border:1px solid var(--line); border-radius:18px; box-shadow:0 12px 35px rgba(24,33,29,.06); }
+  .scope h2 { margin:0 0 6px; font-size:1rem; }
+  .scope p { margin:0; color:var(--muted); font-size:.93rem; }
+  .totals { display:flex; gap:10px; white-space:nowrap; }
+  .total { min-width:112px; padding:13px 16px; border-radius:12px; text-align:center; font-weight:700; }
+  .total strong { display:block; font:700 1.55rem/1 Georgia,serif; }
+  .total.good { color:var(--good); background:var(--good-bg); }
+  .total.bad { color:var(--bad); background:var(--bad-bg); }
+  .tools { position:sticky; top:0; z-index:5; display:flex; gap:10px; align-items:center; margin:18px 0 54px; padding:10px; background:rgba(245,244,239,.92); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+  .tools input { flex:1; min-width:160px; padding:12px 14px; border:1px solid #bfc8c2; border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
+  button,.jump { padding:10px 13px; border:1px solid #bfc8c2; border-radius:10px; background:#fff; font:inherit; font-size:.88rem; cursor:pointer; text-decoration:none; }
+  .outcome-section + .outcome-section { margin-top:78px; padding-top:10px; }
+  .section-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; border-bottom:2px solid var(--ink); }
+  .section-heading h2 { margin:0 0 14px; font:700 clamp(1.55rem,3vw,2.4rem)/1.2 Georgia,"Yu Mincho",serif; }
+  .eyebrow { margin:0 0 3px; color:var(--muted); font-size:.77rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+  .count { margin-bottom:14px; font-weight:800; }
+  .case-list { display:grid; gap:10px; }
+  .case { background:var(--card); border:1px solid var(--line); border-radius:13px; overflow:hidden; }
+  .case[open] { box-shadow:0 10px 30px rgba(24,33,29,.07); }
+  .case summary { display:grid; grid-template-columns:74px minmax(0,1fr) auto auto 18px; gap:10px; align-items:center; padding:17px 18px; cursor:pointer; list-style:none; }
+  .case summary::-webkit-details-marker { display:none; }
+  .case-id { color:var(--muted); font:700 .75rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .case-title { font-weight:750; line-height:1.45; }
+  .status,.new { padding:3px 8px; border-radius:999px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+  .recovered .status { color:var(--good); background:var(--good-bg); }
+  .not-recovered .status { color:var(--bad); background:var(--bad-bg); }
+  .new { color:#704f0a; background:#fff0c8; }
+  .chevron { width:8px; height:8px; border-right:2px solid #7a847e; border-bottom:2px solid #7a847e; transform:rotate(45deg); transition:.2s; }
+  .case[open] .chevron { transform:rotate(225deg); }
+  .case-content { padding:4px 18px 22px 102px; border-top:1px solid #eef1ef; }
+  .case-meta { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; margin:18px 0; padding:0; }
+  .case-meta div { display:grid; grid-template-columns:100px 1fr; gap:10px; padding:7px 0; border-bottom:1px solid #eef1ef; }
+  dt { color:var(--muted); font-size:.78rem; font-weight:700; }
+  dd { margin:0; font-size:.9rem; }
+  .narrative { max-width:760px; }
+  .narrative h4 { margin:22px 0 4px; font-size:.9rem; }
+  .narrative p,.narrative li { margin:0 0 9px; font-size:.95rem; }
+  .source { margin:24px 0 0; padding-top:13px; border-top:1px solid var(--line); color:var(--muted); font-size:.82rem; }
+  .source span { margin-right:8px; font-weight:800; }
+  .source small { font-size:.76rem; }
+  .hidden { display:none; }
+  .empty { display:none; margin:18px 0; color:var(--muted); }
+  footer { padding:0 0 50px; color:var(--muted); font-size:.8rem; }
+  @media (max-width:760px) {
+    .hero { padding-top:52px; }
+    .scope { grid-template-columns:1fr; }
+    .totals { white-space:normal; }
+    .total { flex:1; min-width:0; }
+    .tools { flex-wrap:wrap; }
+    .tools input { flex-basis:100%; }
+    .case summary { grid-template-columns:64px minmax(0,1fr) 16px; }
+    .case summary .status,.case summary .new { grid-row:2; }
+    .case summary .status { grid-column:2; justify-self:start; }
+    .case summary .new { grid-column:2; justify-self:end; }
+    .chevron { grid-column:3; grid-row:1; }
+    .case-content { padding-left:18px; }
+    .case-meta { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Collected relationship stories</p>
+    <h1>夫婦関係が回復した事例／<br>回復しなかった事例</h1>
+    <p>公開された当事者の語りを、結末が確認できる2群だけに分けた事例集。成功率や原因の分布ではなく、一件ごとの悪化・試行・結果を読むためのレポート。</p>
+  </div>
+</header>
+<main>
+  <aside class="scope" aria-label="このレポートの範囲">
+    <div>
+      <h2>数字は収録件数であり、回復率ではありません</h2>
+      <p>検索で集めた168件のうち、語り手が関係の改善を明記した53件と、未修復の継続・破綻・離婚を明記した64件を掲載。予防例、部分的改善、別居後の結末不明、現在進行中、情報不足の51件は判定せず除外しました。無作為抽出ではないため、構成比・成功率・原因分布は示しません。</p>
+    </div>
+    <div class="totals" aria-label="掲載件数">
+      <a class="total good" href="#recovered"><strong>53</strong>回復した</a>
+      <a class="total bad" href="#not-recovered"><strong>64</strong>回復しなかった</a>
+    </div>
+  </aside>
+  <nav class="tools" aria-label="事例の操作">
+    <input id="search" type="search" placeholder="原因・行動・語り手・出典から検索" aria-label="事例を検索">
+    <a class="jump" href="../">資料一覧</a>
+    <a class="jump" href="../typologies/">理論・尺度</a>
+    <a class="jump" href="aggregate-report.html">集計レポート</a>
+    <a class="jump" href="#recovered">回復した事例</a>
+    <a class="jump" href="#not-recovered">回復しなかった事例</a>
+    <button id="open-all" type="button">表示中を開く</button>
+    <button id="close-all" type="button">閉じる</button>
+  </nav>
+
+<section id="recovered" class="outcome-section">
+  <div class="section-heading">
+    <div><p class="eyebrow">Outcome 01</p><h2>回復した事例と、その内容</h2></div>
+    <span class="count" data-total="53">53件</span>
+  </div>
+  <div class="case-list">
+<details class="case recovered" data-search="話し合いが毎回口論になる夫が事前準備で冷静化 語り手 夫（年代不明） 悪化の中心 コミュニケーション（話し合いが口論になる） 試したこと 話し方の工夫（事前準備） 記録上の結末 改善 リコ活media「【体験談】夫婦関係の修復のきっかけは？」">
+  <summary>
+    <span class="case-id">事例 001</span>
+    <span class="case-title">話し合いが毎回口論になる夫が事前準備で冷静化</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫（年代不明）</dd></div><div><dt>悪化の中心</dt><dd>コミュニケーション（話し合いが口論になる）</dd></div><div><dt>試したこと</dt><dd>話し方の工夫（事前準備）</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>妻と話し合おうとすると、いつも口論になってしまう夫。</p>
+<h4>悪化の経緯</h4>
+<p>話し合いのたびに感情的になり、建設的な結論に至らないまま関係がこじれていった。</p>
+<h4>転機・やったこと</h4>
+<p>「妻に言われそうなことをあらかじめ予想し、答え方を何パターンか用意してから話し合う」ようにした。話し合いを場当たりでなく準備して臨む方式に変えた。</p>
+<h4>結果</h4>
+<p>感情的になるのを抑えられ、冷静に話ができるようになった。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ricokatsu.com/media/posts/48" target="_blank" rel="noreferrer">リコ活MEDIA「【体験談】夫婦関係の修復のきっかけは？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="会話のない夫婦が短い手紙で関係を取り戻す 語り手 妻（年代不明） 悪化の中心 会話の消失 試したこと 手紙（非同期・非対面のコミュニケーション） 記録上の結末 改善 リコ活media「【体験談】夫婦関係の修復のきっかけは？」">
+  <summary>
+    <span class="case-id">事例 002</span>
+    <span class="case-title">会話のない夫婦が短い手紙で関係を取り戻す</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（年代不明）</dd></div><div><dt>悪化の中心</dt><dd>会話の消失</dd></div><div><dt>試したこと</dt><dd>手紙（非同期・非対面のコミュニケーション）</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>夫婦仲が冷え込み、会話がほぼない状態になっていた。</p>
+<h4>転機・やったこと</h4>
+<p>面と向かって話す代わりに「短い手紙」を書いて渡した。</p>
+<h4>結果</h4>
+<p>それをきっかけに以前のような仲を取り戻した。本人いわく「手書きの文字から夫が書いている姿が想像でき、自分も悪かったかなと反省できた」。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ricokatsu.com/media/posts/48" target="_blank" rel="noreferrer">リコ活MEDIA「【体験談】夫婦関係の修復のきっかけは？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="テレビのつけっ放しで喧嘩する夫婦が誕生日の手紙で和解 語り手 妻（年代不明） 悪化の中心 ささいなことでの喧嘩の蓄積 試したこと 手紙で伝えられた感謝 記録上の結末 改善 リコ活media「【体験談】夫婦関係の修復のきっかけは？」">
+  <summary>
+    <span class="case-id">事例 006</span>
+    <span class="case-title">テレビのつけっ放しで喧嘩する夫婦が誕生日の手紙で和解</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（年代不明）</dd></div><div><dt>悪化の中心</dt><dd>ささいなことでの喧嘩の蓄積</dd></div><div><dt>試したこと</dt><dd>手紙で伝えられた感謝</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>「テレビをつけっ放しにした」など、ささいなことで夫婦喧嘩をしてしまう状態。</p>
+<h4>転機</h4>
+<p>誕生日にもらった手紙に、普段の感謝の気持ちがつづられていた。</p>
+<h4>結果</h4>
+<p>「やっぱり夫婦でいられてよかった」と思えた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ricokatsu.com/media/posts/48" target="_blank" rel="noreferrer">リコ活MEDIA「【体験談】夫婦関係の修復のきっかけは？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="浪費家の夫にfpの指摘が効いて浪費が止まる 語り手 妻（年代不明） 家族 子どもあり 悪化の中心 金銭感覚の不一致 試したこと 第三者専門家（fp）の客観的説明 記録上の結末 改善 リコ活media「【体験談】夫婦関係の修復のきっかけは？」">
+  <summary>
+    <span class="case-id">事例 008</span>
+    <span class="case-title">浪費家の夫にFPの指摘が効いて浪費が止まる</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（年代不明）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>金銭感覚の不一致</dd></div><div><dt>試したこと</dt><dd>第三者専門家（FP）の客観的説明</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>子どもや自分たちの将来のために貯金したい妻に対し、夫は浪費家ですぐ使ってしまう。夫婦間の説得は通じなかった。</p>
+<h4>やったこと</h4>
+<p>ファイナンシャルプランナーに相談し、家計簿を見てもらった。</p>
+<h4>結果</h4>
+<p>理論的なアドバイスにより夫も浪費をやめた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ricokatsu.com/media/posts/48" target="_blank" rel="noreferrer">リコ活MEDIA「【体験談】夫婦関係の修復のきっかけは？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="離婚届を書いた20代夫婦が思いやりの積み重ねで平和になる 語り手 回答者（既婚者、当時20代） 悪化の中心 頻繁な喧嘩・口をきかない期間 試したこと 日々の感謝・笑顔・優しさ／時間 記録上の結末 良好（喧嘩ほとんどなし） yahoo!知恵袋「離婚寸前までいって、結局離婚せず仲良くなった夫婦はいるのでしょうか」">
+  <summary>
+    <span class="case-id">事例 010</span>
+    <span class="case-title">離婚届を書いた20代夫婦が思いやりの積み重ねで平和になる</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（既婚者、当時20代）</dd></div><div><dt>悪化の中心</dt><dd>頻繁な喧嘩・口をきかない期間</dd></div><div><dt>試したこと</dt><dd>日々の感謝・笑顔・優しさ／時間</dd></div><div><dt>記録上の結末</dt><dd>良好（喧嘩ほとんどなし）</dd></div></dl>
+    <div class="narrative"><h4>質問者の状況</h4>
+<p>20代夫婦、2歳の子どもあり。性格の不一致、コミュニケーション不足、夫が妊活に真剣でないことに悩み「離婚寸前から仲良くなった例はあるか」と質問した。</p>
+<h4>回答者の体験</h4>
+<p>20代の頃は喧嘩が頻繁で、離婚届をもらいに行き、実際に書いたこともあり、口をきかない時期もあった。現在は仲良く、喧嘩もほとんどなく平和。</p>
+<h4>本人の総括</h4>
+<p>「思いやりが大切」「日々の感謝も笑顔も優しさも」。一方で「離婚しない！と頭ごなしに言っても嫌がられるだけ」であり、「時間が解決してくれる」とも述べる。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10254000930" target="_blank" rel="noreferrer">Yahoo!知恵袋「離婚寸前までいって、結局離婚せず仲良くなった夫婦はいるのでしょうか」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="8年かけて対話の型を作り我慢する側をやめた夫婦 語り手 妻（ブログ筆者） 悪化の中心 感情表現スタイルの不一致（夫は直情型／妻は抑圧型） 試したこと 対話プロセスの型を8年かけて確立 記録上の結末 良好（共同で新居建築まで到達） note「離婚寸前の喧嘩を乗り越え、夫婦が心から仲良くなるまで」（おもち暮らし）">
+  <summary>
+    <span class="case-id">事例 011</span>
+    <span class="case-title">8年かけて対話の型を作り我慢する側をやめた夫婦</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（ブログ筆者）</dd></div><div><dt>悪化の中心</dt><dd>感情表現スタイルの不一致（夫は直情型／妻は抑圧型）</dd></div><div><dt>試したこと</dt><dd>対話プロセスの型を8年かけて確立</dd></div><div><dt>記録上の結末</dt><dd>良好（共同で新居建築まで到達）</dd></div></dl>
+    <div class="narrative"><h4>夫婦の型</h4>
+<ul><li>夫：嫌なことは即「嫌だ」と言い、怒りを感情的に表現する。</li><li>妻：揉め事を避けるため気持ちを隠す。毒親の下で育ち、不当な感情にも耐える癖がある。</li></ul>
+<h4>悪化の経緯</h4>
+<p>夫が「言いたいことがあるなら言え」と促しても、妻は「言い返したらもっと大変になる」と本音を隠す。妻の内心には「怒るときの言葉遣いが嫌だ」「傷つける言葉を選ぶのはやめてほしい」という不満が溜まっていた。最終的に一週間口をきかない大喧嘩に発展。</p>
+<h4>やったこと（8年かけた対話の型）</h4>
+<p>1. 怒りそうになったら一旦止まり、物理的に距離を置く 2. 落ち着いてから相手の話を全部聞く 3. 「私はこう思って」と自分の気持ちを説明する 4. 「なぜそう思ったんだろうね？」と一緒に考える 5. 「次はこうしようか」と次の行動を決める</p>
+<p>加えて、互いの過去の傷つきを丁寧に拾い、「本当はこう感じていたけれど隠していた」という気持ちに向き合った。</p>
+<h4>結果</h4>
+<p>8年目から深い対話が可能に。「どちらかが我慢する」から「二人でつくりあげる」へ意識が転換し、新居建築という大きな共同プロジェクトを完遂した。</p>
+<h4>筆者自身の留保</h4>
+<p>「この方法が万人に確実に合うとは保証できない」。夫に改善意欲があったから成立したと明言している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/omochikurashi/n/n45288e809fbc" target="_blank" rel="noreferrer">note「離婚寸前の喧嘩を乗り越え、夫婦が心から仲良くなるまで」（おもち暮らし）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="離婚に両家が反対し別居婚のまま4年で和やかになる 語り手 妻（44歳） 家族 子どもあり 悪化の中心 性格の不一致（結婚5年目） 試したこと 別居の常態化（別居婚） 記録上の結末 同居はしないが関係は和やかに ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」">
+  <summary>
+    <span class="case-id">事例 012</span>
+    <span class="case-title">離婚に両家が反対し別居婚のまま4年で和やかになる</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（44歳）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>性格の不一致（結婚5年目）</dd></div><div><dt>試したこと</dt><dd>別居の常態化（別居婚）</dd></div><div><dt>記録上の結末</dt><dd>同居はしないが関係は和やかに</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>結婚5年目、性格の不一致を理由に夫婦で離婚に合意。しかし両実家が離婚に強く反対し、説得できなかった。</p>
+<h4>やったこと</h4>
+<p>妥協案として別居に踏み切った。時間が経つうち「現状維持でいいか」という認識に変わり、離婚手続きを進めないまま4年が経過。</p>
+<h4>結果</h4>
+<p>完全な「別居婚」に落ち着いた。月に1〜2回は子どもも交えて夫と食事をするなど、和やかなムードを取り戻した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ure.pia.co.jp/articles/-/1718973" target="_blank" rel="noreferrer">ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="義実家を味方につけて夫の不倫を終わらせた妻 語り手 妻（37歳） 家族 小さい子どもあり 悪化の中心 夫の不倫（相手と再婚したい意向） 試したこと 義父母を味方に巻き込む 記録上の結末 離婚回避（決着まで1年以上） ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」">
+  <summary>
+    <span class="case-id">事例 013</span>
+    <span class="case-title">義実家を味方につけて夫の不倫を終わらせた妻</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（37歳）</dd></div><div><dt>家族</dt><dd>小さい子どもあり</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫（相手と再婚したい意向）</dd></div><div><dt>試したこと</dt><dd>義父母を味方に巻き込む</dd></div><div><dt>記録上の結末</dt><dd>離婚回避（決着まで1年以上）</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>夫の浮気が判明。夫は浮気相手と再婚したい意向で、夫婦間の話し合いでは埒があかなかった。子どもが小さく妻は離婚を避けたかった。</p>
+<h4>やったこと</h4>
+<p>義実家に協力を求め、粘り強く説得。義母・義父が「孫のためなら」と協力を約束し、義母が夫に対して道徳的な説得を行った。</p>
+<h4>結果</h4>
+<p>夫が浮気相手と完全に切れるまで1年以上かかったが、最終的に離婚を回避。妻は「義実家を巻き込んでよかった」と述べている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ure.pia.co.jp/articles/-/1718973?page=2" target="_blank" rel="noreferrer">ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="収入減で罵り合った夫婦が引っ越しと生活水準の切り下げで再生 語り手 妻（36歳） 悪化の中心 世帯収入の減少と責任のなすりつけ合い 試したこと 環境と生活水準のリセット 記録上の結末 離婚回避・喧嘩減少 ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」">
+  <summary>
+    <span class="case-id">事例 014</span>
+    <span class="case-title">収入減で罵り合った夫婦が引っ越しと生活水準の切り下げで再生</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（36歳）</dd></div><div><dt>悪化の中心</dt><dd>世帯収入の減少と責任のなすりつけ合い</dd></div><div><dt>試したこと</dt><dd>環境と生活水準のリセット</dd></div><div><dt>記録上の結末</dt><dd>離婚回避・喧嘩減少</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>世帯収入が大幅に減少。お金のことで毎日のように夫婦喧嘩をし、互いに責任を押し付け合って罵り合い、離婚寸前まで進んだ。</p>
+<h4>やったこと</h4>
+<p>1. 引っ越しと人間関係の一新を提案 2. 身の丈に合った生活水準へ切り下げ 3. 妻が単独で準備を実行（車の売却、転居など） 4. 夫のゴルフ仲間との交友関係を断たせた</p>
+<h4>結果</h4>
+<p>プライドを手放して新しい環境に移り、夫の交際費が減って家計が改善。喧嘩が減り離婚を回避した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ure.pia.co.jp/articles/-/1718973?page=3" target="_blank" rel="noreferrer">ハピママ*「実録！『離婚危機』を乗り越えた夫婦がした“荒ワザ”3事例」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="産後30キロ増でレス5年 健康診断きっかけの減量で解消 語り手 夫婦（健さん・絢美さん、社内結婚） 家族 子ども2人 悪化の中心 産後の体型変化に対する夫の性的関心の消失 試したこと 健康問題を機とした妻の大幅減量 記録上の結末 レス解消 all about「セックスレスの4つの解消法！レスを解消した夫婦4組の事例から学ぶ」">
+  <summary>
+    <span class="case-id">事例 015</span>
+    <span class="case-title">産後30キロ増でレス5年 健康診断きっかけの減量で解消</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫婦（健さん・絢美さん、社内結婚）</dd></div><div><dt>家族</dt><dd>子ども2人</dd></div><div><dt>悪化の中心</dt><dd>産後の体型変化に対する夫の性的関心の消失</dd></div><div><dt>試したこと</dt><dd>健康問題を機とした妻の大幅減量</dd></div><div><dt>記録上の結末</dt><dd>レス解消</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>出産後、妻の体重が約30kg増加。夫は「ぷよぷよとしてたるんだお腹を見ると、抱きたい気持ちが起こりませんでした」と語り、産後レスが約5年続いた。</p>
+<h4>転機</h4>
+<p>妻の健康診断で、医師から「このままでは長生きできない」と指摘された。</p>
+<h4>やったこと</h4>
+<p>妻がダイエットを敢行し、1年間で28kg減量。</p>
+<h4>結果</h4>
+<p>かつてのスリムな体型を取り戻したことで夫の嫉妬心が刺激され、「俺だけの妻だぞー！」という気持ちが復活。レスが解消した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://allabout.co.jp/gm/gc/479169/" target="_blank" rel="noreferrer">All About「セックスレスの4つの解消法！レスを解消した夫婦4組の事例から学ぶ」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="妻が実家の洋菓子店を継ぎ会えない時間ができてレス解消 語り手 夫婦（悟史さん・理沙さん） 家族 子どもあり 悪化の中心 「いつでもできる」という常時同居の油断／夫の多忙と淡泊さ 試したこと 妻の就労開始による物理的な距離の発生 記録上の結末 レス解消・会話も増加 all about「セックスレスの4つの解消法！」">
+  <summary>
+    <span class="case-id">事例 016</span>
+    <span class="case-title">妻が実家の洋菓子店を継ぎ会えない時間ができてレス解消</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫婦（悟史さん・理沙さん）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>「いつでもできる」という常時同居の油断／夫の多忙と淡泊さ</dd></div><div><dt>試したこと</dt><dd>妻の就労開始による物理的な距離の発生</dd></div><div><dt>記録上の結末</dt><dd>レス解消・会話も増加</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>夫は仕事が忙しく睡眠を優先し、「なんとなくセックスレス」に。夫は性に淡泊で、妻は専業主婦として夫に依存する生活。毎晩一緒にいるため「いつでもできる」と思い込んでいた。</p>
+<h4>転機</h4>
+<p>夫の父親が脳梗塞で倒れ、実家の洋菓子店の存続問題が発生。妻が初めて自分の意思を主張し「洋菓子店を引き継ぎたい」と申し出た。夫も賛成。</p>
+<h4>やったこと</h4>
+<p>妻が週の半分を実家で店の経営、半分を家で主婦業をする生活を始めた。</p>
+<h4>結果</h4>
+<p>会えない時間が増えたことで「今晩しないと、今週はもうできない」という心理が生まれ、性的欲求が復活。夫婦の会話も増えた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://allabout.co.jp/gm/gc/479169/" target="_blank" rel="noreferrer">All About「セックスレスの4つの解消法！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="結婚10周年の夜のめんどくさいで2年レス 同じ場所での謝罪で解消 語り手 夫婦（司さん・佳奈さん） 悪化の中心 記念日に拒否されたことによる夫のプライドの傷 試したこと 妻からの正直な説明と謝罪 記録上の結末 レス解消 all about「セックスレスの4つの解消法！」">
+  <summary>
+    <span class="case-id">事例 017</span>
+    <span class="case-title">結婚10周年の夜のめんどくさいで2年レス 同じ場所での謝罪で解消</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫婦（司さん・佳奈さん）</dd></div><div><dt>悪化の中心</dt><dd>記念日に拒否されたことによる夫のプライドの傷</dd></div><div><dt>試したこと</dt><dd>妻からの正直な説明と謝罪</dd></div><div><dt>記録上の結末</dt><dd>レス解消</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>結婚10周年、結婚式を挙げたホテルでの記念の夜に、妻がセックスを「めんどくさい」と拒否。夫は「記念日なのに、記念の場所なのに」と深く傷つき、以後2年間のセックスレスに入った。</p>
+<h4>転機</h4>
+<p>2年後、妻から同じ挙式ホテルでの食事に誘われた。その場で妻が謝罪し、「あの晩は飲みすぎて吐きそうで気持ち悪かったが、恥ずかしくて『めんどくさい』と言ってしまった」と正直に説明。涙ながらに「また私を抱いてくれる？」と伝えた。</p>
+<h4>結果</h4>
+<p>2年間のわだかまりが一瞬で溶け、レスが解消した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://allabout.co.jp/gm/gc/479169/" target="_blank" rel="noreferrer">All About「セックスレスの4つの解消法！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="edと男のプライドを手放して挿入以外の形に広げた40代夫婦 語り手 夫（雅人さん、40代後半）・妻（菜々美さん） 悪化の中心 夫のed未治療とプライドの傷つき 試したこと 「挿入だけがセックスではない」への認識転換 記録上の結末 レス解消 all about「セックスレスの4つの解消法！」">
+  <summary>
+    <span class="case-id">事例 018</span>
+    <span class="case-title">EDと男のプライドを手放して挿入以外の形に広げた40代夫婦</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫（雅人さん、40代後半）・妻（菜々美さん）</dd></div><div><dt>悪化の中心</dt><dd>夫のED未治療とプライドの傷つき</dd></div><div><dt>試したこと</dt><dd>「挿入だけがセックスではない」への認識転換</dd></div><div><dt>記録上の結末</dt><dd>レス解消</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>40代前半からED気味（中折れなど）になったが治療せず放置。週1回だったセックスが月1〜2回に減り、やがて完全なレスへ。最後の試みで「勃起に自信がないので」と工夫したが失敗し、妻に「できないなら最初から無理しなくてもいいのに」と言われて男としてのプライドが砕けた。</p>
+<h4>転機</h4>
+<p>旅行先の宿で貸切露天風呂に一緒に入浴。風呂上がりに裸のまま室内でキスや愛撫、オーラルセックスなど、挿入以外の性的接触を楽しんだ。</p>
+<h4>結果</h4>
+<p>「挿入だけがセックスではない」と気づき、固定観念とプライドを手放したことで「2人で自由にいろいろなエッチを楽しんでます」という状態へ。</p></div>
+    <p class="source"><span>出典</span> <a href="https://allabout.co.jp/gm/gc/479169/" target="_blank" rel="noreferrer">All About「セックスレスの4つの解消法！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="5年レスがハワイの旅行先で解消しコロナで再発しまた旅行で解消 語り手 回答者（性別不明） 悪化の中心 長期のセックスレス／コロナ禍による再発 試したこと 旅行先という非日常環境 記録上の結末 2度とも解消（再発あり） yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？きっかけは何でしたか？」">
+  <summary>
+    <span class="case-id">事例 019</span>
+    <span class="case-title">5年レスがハワイの旅行先で解消しコロナで再発しまた旅行で解消</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（性別不明）</dd></div><div><dt>悪化の中心</dt><dd>長期のセックスレス／コロナ禍による再発</dd></div><div><dt>試したこと</dt><dd>旅行先という非日常環境</dd></div><div><dt>記録上の結末</dt><dd>2度とも解消（再発あり）</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>5年のセックスレス期間を経て、ハワイ・ワイキキの高級ホテルで「襲った」ことで解消。その後コロナ禍で3年再びレスになり、熱海の旅館で再度解消した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12278082822" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？きっかけは何でしたか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="自己犠牲と被害者意識を手放したら夫から誘うようになった 語り手 妻（回答者） 悪化の中心 セックスレス／妻側の自己犠牲と被害者意識 試したこと 自分を優先し自分の機嫌を取る 記録上の結末 夫から誘うようになった yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？」">
+  <summary>
+    <span class="case-id">事例 020</span>
+    <span class="case-title">自己犠牲と被害者意識を手放したら夫から誘うようになった</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（回答者）</dd></div><div><dt>悪化の中心</dt><dd>セックスレス／妻側の自己犠牲と被害者意識</dd></div><div><dt>試したこと</dt><dd>自分を優先し自分の機嫌を取る</dd></div><div><dt>記録上の結末</dt><dd>夫から誘うようになった</dd></div></dl>
+    <div class="narrative"><h4>やったこと</h4>
+<p>自己犠牲と被害者意識を手放し、「自分を優先する」「自分の機嫌を自分で取る」ことに専念した。</p>
+<h4>結果</h4>
+<p>夫のほうから誘うようになった。本人は、妻側の心理状態や雰囲気の変化が相手に影響したと分析している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12278082822" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="70キロから45キロへ減量し入浴を別にして女性として意識させる 語り手 妻（回答者） 悪化の中心 セックスレス／日常化による異性としての意識の消失 試したこと 減量と「見せない」演出 記録上の結末 改善 yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？」">
+  <summary>
+    <span class="case-id">事例 021</span>
+    <span class="case-title">70キロから45キロへ減量し入浴を別にして女性として意識させる</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（回答者）</dd></div><div><dt>悪化の中心</dt><dd>セックスレス／日常化による異性としての意識の消失</dd></div><div><dt>試したこと</dt><dd>減量と「見せない」演出</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>やったこと</h4>
+<ul><li>70kg近い体重を2〜3年かけて45kgまで減量</li><li>入浴を別にし、裸を見せないようにした</li><li>新しい下着を新調した</li></ul></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12278082822" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスから挽回したご夫婦はいますか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="許すではなく怒りを手放す 黒い感情を徹底的に吐き出して癒えた妻 語り手 妻 悪化の中心 夫の不倫 試したこと 自分の感情の徹底的な言語化・排出 記録上の結末 浮気のことを忘れるほど回復 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 029</span>
+    <span class="case-title">許すではなく怒りを手放す 黒い感情を徹底的に吐き出して癒えた妻</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫</dd></div><div><dt>試したこと</dt><dd>自分の感情の徹底的な言語化・排出</dd></div><div><dt>記録上の結末</dt><dd>浮気のことを忘れるほど回復</dd></div></dl>
+    <div class="narrative"><h4>やったこと</h4>
+<p>「許す」というより「怒りを手放す」作業だと捉え直した。夫の謝罪では癒されなかったため、自分の黒い感情と向き合い、徹底的に吐き出した。</p>
+<h4>結果</h4>
+<p>現在は浮気のことを忘れるほど癒えている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="まだ愛していたから許すと決めたら夫が最初の頃のように戻った 語り手 妻 悪化の中心 配偶者の不倫 試したこと 「まだ愛している」という自覚に基づく赦し 記録上の結末 再構築成功・関係良化 npo法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？当事者の声も紹介」">
+  <summary>
+    <span class="case-id">事例 041</span>
+    <span class="case-title">まだ愛していたから許すと決めたら夫が最初の頃のように戻った</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>配偶者の不倫</dd></div><div><dt>試したこと</dt><dd>「まだ愛している」という自覚に基づく赦し</dd></div><div><dt>記録上の結末</dt><dd>再構築成功・関係良化</dd></div></dl>
+    <div class="narrative"><h4>選択と理由</h4>
+<p>「結局私はまだ旦那を愛していたので、許す事にした」。</p>
+<h4>結果</h4>
+<p>夫は浮気相手との関係を断ち、「最初の頃のように私を愛してくれるようになりました」。「すごく優しくなった」と語り、現在も一緒に生活を続けている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://npoyotuba.com/topics/affair-reconstruction.html" target="_blank" rel="noreferrer">NPO法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？当事者の声も紹介」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="条件を提示して再構築 1年経ち浮気の気配はない 語り手 妻 悪化の中心 配偶者の不倫 試したこと 条件（ルール）を明示して再構築 記録上の結末 1年経過し安定 npo法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」">
+  <summary>
+    <span class="case-id">事例 042</span>
+    <span class="case-title">条件を提示して再構築 1年経ち浮気の気配はない</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>配偶者の不倫</dd></div><div><dt>試したこと</dt><dd>条件（ルール）を明示して再構築</dd></div><div><dt>記録上の結末</dt><dd>1年経過し安定</dd></div></dl>
+    <div class="narrative"><h4>やったこと</h4>
+<p>再構築を決め、いくつかの条件を提示した。</p>
+<h4>結果</h4>
+<p>発覚から1年経過し「もう浮気している気配はありません」。「以前より優しくなった気がします」。今後も一緒に人生を歩む予定。</p></div>
+    <p class="source"><span>出典</span> <a href="https://npoyotuba.com/topics/affair-reconstruction.html" target="_blank" rel="noreferrer">NPO法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="年表を書いたらa4一枚と10枚 浮気の理由は寂しさだった夫婦 語り手 カウンセラーによる事例紹介（kさん夫婦） 家族 夫30代前半・年収700万円／妻は専業主婦 悪化の中心 夫の浮気、家計の破綻、妻の実家優先、性的関係の拒否 試したこと 関係史の可視化と本心の開示 記録上の結末 3か月後に家庭に笑顔が戻る たまひよ「離婚寸前だった夫婦が3つのポイントで円満に！ 夫婦円満コンサルタントが解説」">
+  <summary>
+    <span class="case-id">事例 050</span>
+    <span class="case-title">年表を書いたらA4一枚と10枚 浮気の理由は寂しさだった夫婦</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>カウンセラーによる事例紹介（Kさん夫婦）</dd></div><div><dt>家族</dt><dd>夫30代前半・年収700万円／妻は専業主婦</dd></div><div><dt>悪化の中心</dt><dd>夫の浮気、家計の破綻、妻の実家優先、性的関係の拒否</dd></div><div><dt>試したこと</dt><dd>関係史の可視化と本心の開示</dd></div><div><dt>記録上の結末</dt><dd>3か月後に家庭に笑顔が戻る</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<ul><li>夫の浮気（相手は既婚者）が発覚</li><li>妻が両親を巻き込み事態が大ごとになり、夫は実家に戻って別居状態に</li><li>背景として、妻は月1回以上実家との付き合いを優先していた</li><li>夫は多忙で家計管理を妻に一任していたが「貯金がゼロになっていた」ため管理を引き継ぎ、家計費を減額した</li><li>妻は夜の営みを拒否していた</li></ul>
+<h4>やったこと（3つのポイント）</h4>
+<p>1. <strong>関係史の可視化</strong>：夫婦それぞれが「出会いから現在までの年表」を作成。夫はA4用紙1枚、妻は10枚。この差が価値観の違いを可視化した。個別面談で夫には「妻の努力を認め見守る」、妻には「夫を認め、仕事の頑張りを見ていたと伝える」よう指導。 2. <strong>本心の開示</strong>：妻が「愛がないなら離婚する。あなたの愛が欲しい」と表現したことで、夫も「ずっと淋しかった」と本心を明かした。浮気の動機は孤独感だったと判明。 3. <strong>夫主導での相談</strong>：夫が妻を連れて相談に来た。カウンセラーは「男性主導だとうまくいくケースが多い」と述べる。</p>
+<h4>結果</h4>
+<p>相談終了から3か月後、「意地を張らずお互いの気持ちを伝え合うようになり、家庭に笑顔が増えた」。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=24656" target="_blank" rel="noreferrer">たまひよ「離婚寸前だった夫婦が3つのポイントで円満に！ 夫婦円満コンサルタントが解説」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="家族のために全力だったのに心が離れた 夫の機嫌でなく自分の機嫌をとる 語り手 前田ちえみさん（コーチング講師） 家族 子どもあり 悪化の中心 家族のための頑張りが空回りし、すれ違いが拡大 試したこと 「夫との関係を良くしようと頑張ること」を手放す 記録上の結末 週1でデートする関係へ note「離婚寸前だった夫婦関係が劇的に変わった瞬間」">
+  <summary>
+    <span class="case-id">事例 052</span>
+    <span class="case-title">家族のために全力だったのに心が離れた 夫の機嫌でなく自分の機嫌をとる</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>前田ちえみさん（コーチング講師）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>家族のための頑張りが空回りし、すれ違いが拡大</dd></div><div><dt>試したこと</dt><dd>「夫との関係を良くしようと頑張ること」を手放す</dd></div><div><dt>記録上の結末</dt><dd>週1でデートする関係へ</dd></div></dl>
+    <div class="narrative"><h4>悪化の状況</h4>
+<p>仕事、家事、育児に全力で取り組んでいたが、夫との距離は広がり続けた。「手をつなぐのはおろか、夫から話しかけてくることはほぼなく」、家の中の雰囲気は険悪そのもの。「こんなに家族の為を思っているのに、なぜ心が離れていくのだろう？」と悩んでいた。</p>
+<h4>転機・やったこと</h4>
+<ul><li>「夫との関係を良くしようと頑張ること」自体を手放した</li><li>夫の機嫌をとるのではなく、自分の機嫌をとることにシフト</li><li>自分の好き嫌いを認識する</li><li>「こうあるべき」ではなく「どうありたいか」に意識を向ける</li></ul>
+<h4>結果</h4>
+<p>現在は週1回デートするほどの関係になり、夫と一緒にライブにも行けるようになった。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/chiemi_maeda/n/nd4d40275295b" target="_blank" rel="noreferrer">note「離婚寸前だった夫婦関係が劇的に変わった瞬間」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="2人目出産後に夫が子どもの前で怒り狂うようになり元日に泣き崩れた妻 語り手 妻（元教員、現ピュア化コーチ） 家族 子ども2人 悪化の中心 2人目出産後、夫が怒りをコントロールできなくなった 試したこと 相談機関の利用と、最終的には自分の内面の変容 記録上の結末 半年で改善 note「離婚寸前の夫婦関係を半年で修復した方法を大公開！」">
+  <summary>
+    <span class="case-id">事例 053</span>
+    <span class="case-title">2人目出産後に夫が子どもの前で怒り狂うようになり元日に泣き崩れた妻</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（元教員、現ピュア化コーチ）</dd></div><div><dt>家族</dt><dd>子ども2人</dd></div><div><dt>悪化の中心</dt><dd>2人目出産後、夫が怒りをコントロールできなくなった</dd></div><div><dt>試したこと</dt><dd>相談機関の利用と、最終的には自分の内面の変容</dd></div><div><dt>記録上の結末</dt><dd>半年で改善</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>もともと優しく家族思いだった夫が、2人目の出産後に「人が変わったようにキレることが増え」、子どもの前でも「怒り狂う自分を止められない」状態になった。妻が実家に帰っても状況は悪化し、妻の言葉が夫に一切入らなくなった。</p>
+<h4>底</h4>
+<p>年始の1月1日、妻は「膝から崩れ落ちて、声をあげて泣きました。絶望しかありませんでした」。</p>
+<h4>やったこと</h4>
+<p>1. 行政の女性相談窓口に電話 2. 民間カウンセリングで「共依存」「カサンドラ症候群」について学習 3. 精神科でADHD検査（結果は該当せず） 4. 潜在意識・インナーチャイルドを扱うコミュニティに参加（本人が最大の転機と位置づける）</p>
+<h4>気づき</h4>
+<p>夫を「コントロール」しようとしていたことが問題で、幼少期に満たされなかった感情を夫に求めていたと認識した。</p>
+<h4>結果</h4>
+<p>半年で改善し、感謝や愛情表現が日常化。「ぶつかることもあるが、その度に夫婦の絆が深まる」状態へ。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/kurumi_09/n/nea20b3b3d061" target="_blank" rel="noreferrer">note「離婚寸前の夫婦関係を半年で修復した方法を大公開！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="事あるごとに怒鳴られ侮辱される50代妻が半年で自分の軸を取り戻す 語り手 50代女性（コーチのクライアント事例） 悪化の中心 夫のモラハラ気質（怒鳴り・侮辱） 試したこと 半年間のコーチングによる自己の再確立 記録上の結末 夫が「超優しく」変化した note「モラハラ夫との関係が変わった、半年間の奇跡」">
+  <summary>
+    <span class="case-id">事例 054</span>
+    <span class="case-title">事あるごとに怒鳴られ侮辱される50代妻が半年で自分の軸を取り戻す</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>50代女性（コーチのクライアント事例）</dd></div><div><dt>悪化の中心</dt><dd>夫のモラハラ気質（怒鳴り・侮辱）</dd></div><div><dt>試したこと</dt><dd>半年間のコーチングによる自己の再確立</dd></div><div><dt>記録上の結末</dt><dd>夫が「超優しく」変化した</dd></div></dl>
+    <div class="narrative"><h4>悪化の状況</h4>
+<p>「事あるごとに怒鳴られ、侮辱される生活」。「夫に振り回され家族のことで手一杯になり、自分の気持ちや考えが全く見えなくなっていた」。</p>
+<h4>やったこと</h4>
+<p>半年間のコーチングサポートを受けた（具体的な手法の記載はない）。</p>
+<h4>結果</h4>
+<p>夫婦関係が改善し、自分の軸を取り戻して堂々と生活できるように。「モラハラ気質だった夫が、超優しく変化」。本人の言葉は「我が家に初めて爽快な風が吹きました」。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/takako_munechika/n/nbef6e1429282" target="_blank" rel="noreferrer">note「モラハラ夫との関係が変わった、半年間の奇跡」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="朝の夫の機嫌が悪いと一日が終わったと感じる生活から境界線を引く 語り手 妻（note筆者うさみん） 悪化の中心 夫の不機嫌に妻の生活全体が支配される状態 試したこと 心の境界線を引き、自分の機嫌を自分で管理する 記録上の結末 数か月で夫の嫌味が消え話し合いが可能に note「『夫が変わったのは、わたしが変わったから』元モラハラ夫が優しくなった本当の理由」">
+  <summary>
+    <span class="case-id">事例 055</span>
+    <span class="case-title">朝の夫の機嫌が悪いと一日が終わったと感じる生活から境界線を引く</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（note筆者うさみん）</dd></div><div><dt>悪化の中心</dt><dd>夫の不機嫌に妻の生活全体が支配される状態</dd></div><div><dt>試したこと</dt><dd>心の境界線を引き、自分の機嫌を自分で管理する</dd></div><div><dt>記録上の結末</dt><dd>数か月で夫の嫌味が消え話し合いが可能に</dd></div></dl>
+    <div class="narrative"><h4>悪化の状況</h4>
+<p>夫は嫌味を言い、怒る。妻は「夫の機嫌に振り回され、自分の心はボロボロになっていた」。朝、夫の機嫌が悪いと「一日が終わったな」と感じるほど、夫の感情に支配されていた。</p>
+<h4>やったこと</h4>
+<p>1. 夫が変わるのを待つのをやめた（「夫のご機嫌に振り回されて人生が終わるのか」という気づき） 2. 長年置き去りにしていた自分のやりたいことに時間を使った 3. 自分の機嫌を自分で管理した（紅茶を飲む、仕事に集中する、一人の時間を確保する） 4. 「夫の感情は夫のもの」という心の境界線を引いた</p>
+<h4>結果</h4>
+<p>数か月後、夫は嫌味を言わなくなり、話し合いができるようになり、妻への気遣いが増えた。本人は「私を支配する必要がなくなった」と分析している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/unique_ferret290/n/n638915e560ad" target="_blank" rel="noreferrer">note「『夫が変わったのは、わたしが変わったから』元モラハラ夫が優しくなった本当の理由」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="転勤続きで愚痴しか言わなくなり離婚を告げられた妻 あなたのお陰ですで一変 語り手 麻岡よしみさん（仮名、40代ライター）／夫は証券会社勤務 家族 息子2人 悪化の中心 転勤生活の孤立、夫の帰宅の遅さ、猜疑心、愚痴中心の会話 試したこと 転勤に伴う半年の別居（冷却期間）と、感謝を言語化する習慣 記録上の結末 良好（一緒にいられるだけで幸せと言える関係へ） story web「離婚しようとまで告げられた夫婦関係、修復のきっかけとなった”考え方”とは」">
+  <summary>
+    <span class="case-id">事例 080</span>
+    <span class="case-title">転勤続きで愚痴しか言わなくなり離婚を告げられた妻 あなたのお陰ですで一変</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>麻岡よしみさん（仮名、40代ライター）／夫は証券会社勤務</dd></div><div><dt>家族</dt><dd>息子2人</dd></div><div><dt>悪化の中心</dt><dd>転勤生活の孤立、夫の帰宅の遅さ、猜疑心、愚痴中心の会話</dd></div><div><dt>試したこと</dt><dd>転勤に伴う半年の別居（冷却期間）と、感謝を言語化する習慣</dd></div><div><dt>記録上の結末</dt><dd>良好（一緒にいられるだけで幸せと言える関係へ）</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>大学の同級生だった夫と20歳から交際し26歳で結婚。息子2人を出産後、転勤で浜松、名古屋、静岡へ。静岡では夫に「売り子は恥ずかしい」と反対されながらアパレル店でアルバイトを始めた。夫の帰宅は遅くなり土日も仕事へ。家庭内は険悪になり、別行動が増える。友人から「浮気に違いない」と言われて猜疑心が高まり、亀裂が決定的に。やがて夫から「離婚しよう」と告げられ、本人も「わかった」と答えた。本心で離婚してもいいと思っていた。</p>
+<h4>転機</h4>
+<p>東京転勤までの半年間、結果的に短期別居となり、それが「いい意味での冷却期間」になった。再会時には他人行儀に接することになり、かえって日常会話が増えた。離れたことで、静岡時代は「愚痴しか言ってなかった」と反省が生まれた。夫婦の共通認識として「どちらかが悪いのではなく、他人同士が暮らしていくには思いやりが大事」を得た。</p>
+<h4>やったこと</h4>
+<p>後年、仕事を始めて再び葛藤が生じた際、先輩から「『あなたのお陰です』を言いなさい」と助言され実践。感謝と称賛の言葉を意識的に続けたところ、もめごとが「一切なくなった」。夫の立てた旅行計画などには「いちいち喜び」「大げさに喜ぶように」した。また、精神安定のため月2回プロの掃除を依頼し「無理はしないことが大事」と考えるようにした。</p>
+<h4>結果</h4>
+<p>現在は旅行を共にし、「一緒にいられるだけで幸せだって心から思える」関係に。学びは「夫婦は言わなきゃダメですよね。黙っていたら理解できないままです」。</p></div>
+    <p class="source"><span>出典</span> <a href="https://storyweb.jp/lifestyle/268407/" target="_blank" rel="noreferrer">STORY web「離婚しようとまで告げられた夫婦関係、修復のきっかけとなった”考え方”とは」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="妊娠中の夫の浮気と立会い出産で1年レス 不安だと打ち明けて解決 語り手 妻 悪化の中心 妊娠中の夫の浮気／立会い出産をきっかけとしたレス 試したこと 「レスであることが不安だ」と率直に打ち明けた 記録上の結末 レス解消 ママスタセレクト「話し合う方法は？夫婦のセックスレスを解決するためにできること」">
+  <summary>
+    <span class="case-id">事例 082</span>
+    <span class="case-title">妊娠中の夫の浮気と立会い出産で1年レス 不安だと打ち明けて解決</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>妊娠中の夫の浮気／立会い出産をきっかけとしたレス</dd></div><div><dt>試したこと</dt><dd>「レスであることが不安だ」と率直に打ち明けた</dd></div><div><dt>記録上の結末</dt><dd>レス解消</dd></div></dl>
+    <div class="narrative"><h4>悪化の経緯</h4>
+<p>妊娠中に夫の浮気があり夫婦仲が悪化。さらに立会い出産をきっかけに約1年間のセックスレスになった。</p>
+<h4>やったこと</h4>
+<p>妻が「レスであることが不安だ」と打ち明け、定期的な関係を望んでいると伝えた。</p>
+<h4>結果</h4>
+<p>妻が優しく接するようになり、夫も徐々に応じるようになってレスが解消した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://select.mamastar.jp/105902" target="_blank" rel="noreferrer">ママスタセレクト「話し合う方法は？夫婦のセックスレスを解決するためにできること」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="180センチの夫の大きな音が怖いと指摘され夫が気をつけますと言った瞬間 語り手 妻（ブログ筆者みーやん） 家族 子どもあり 悪化の中心 気持ちのズレと、家庭内の張り詰めた空気 試したこと 夫婦カウンセリング（第三者による翻訳） 記録上の結末 長年伝わらなかったことが伝わった ameblo「夫婦カウンセリングを受けました。その②」">
+  <summary>
+    <span class="case-id">事例 090</span>
+    <span class="case-title">180センチの夫の大きな音が怖いと指摘され夫が気をつけますと言った瞬間</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（ブログ筆者みーやん）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>気持ちのズレと、家庭内の張り詰めた空気</dd></div><div><dt>試したこと</dt><dd>夫婦カウンセリング（第三者による翻訳）</dd></div><div><dt>記録上の結末</dt><dd>長年伝わらなかったことが伝わった</dd></div></dl>
+    <div class="narrative"><h4>受けた経緯</h4>
+<p>夫との気持ちのズレに苦しみ、「家の中は常に張り詰めた空気」という状態に。子どもたちへの悪影響を懸念してカウンセリングへ。筆者は離婚を望み、夫は離婚に反対という立場だった。</p>
+<h4>カウンセラー選定の基準</h4>
+<p>対面であること／結婚・子育て・離婚の経験がある母親的存在／相談件数と口コミが多いこと／夫婦問題に特化していること。料金は3時間3万円で、夫がこの金額の支払いに同意したこと自体が、問題解決への真摯な意思の表れだと受け止めた。</p>
+<h4>気づき</h4>
+<ul><li>現在の関係の問題が、双方の生育歴に大きく影響されていると指摘された</li><li>夫婦ともに「自分のせいかもしれない」という不安を抱えており、それを認めるのが怖くて相手を責めることで自分を守ろうとしていた</li></ul>
+<h4>転機</h4>
+<p>カウンセラーが夫（180cm）に対し、妻（150cm）や子どもたちは「大きい音や不機嫌な態度をとても怖く感じている」と指摘。夫が素直に「気をつけます」と応じた。筆者は「長年言ってきたことがやっと分かってもらえた」という達成感を得た。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ameblo.jp/meeee-yen/entry-12793804205.html" target="_blank" rel="noreferrer">Ameblo「夫婦カウンセリングを受けました。その②」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="新婚時の一時的なレスは仕事の忙しさが原因と分かり容認して改善 語り手 回答者 悪化の中心 夫の仕事の多忙による一時的なレス 試したこと 話し合いによる原因の特定と、状況の容認 記録上の結末 改善 yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」">
+  <summary>
+    <span class="case-id">事例 093</span>
+    <span class="case-title">新婚時の一時的なレスは仕事の忙しさが原因と分かり容認して改善</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者</dd></div><div><dt>悪化の中心</dt><dd>夫の仕事の多忙による一時的なレス</dd></div><div><dt>試したこと</dt><dd>話し合いによる原因の特定と、状況の容認</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>新婚時に一時的なレス状態になったが、話し合いの場を設けたところ原因が仕事の忙しさだと判明。多忙を責めず容認したことで改善した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12302113512" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="妻が重い病気になったときに関係が回復した60代男性 語り手 60代男性 試したこと 配偶者の重病 ロバ耳（モラタメ調査）「一度冷え切った夫婦関係が回復する割合が判明」">
+  <summary>
+    <span class="case-id">事例 115</span>
+    <span class="case-title">妻が重い病気になったときに関係が回復した60代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代男性</dd></div><div><dt>試したこと</dt><dd>配偶者の重病</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「妻が重い病気になったとき」に、冷え切っていた夫婦関係が回復した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）「一度冷え切った夫婦関係が回復する割合が判明」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="夫が神経症になり頼らざるを得なくなって関係が回復した60代女性 語り手 60代女性 試したこと 夫の病気による依存関係の発生 ロバ耳（モラタメ調査）「一度冷え切った夫婦関係が回復する割合が判明」">
+  <summary>
+    <span class="case-id">事例 116</span>
+    <span class="case-title">夫が神経症になり頼らざるを得なくなって関係が回復した60代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>夫の病気による依存関係の発生</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫が神経症になり、夫は嫌でも私を頼らなければならなくなったし、私はそんな夫を支えなければならなくなったから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）「一度冷え切った夫婦関係が回復する割合が判明」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="孫が誕生してから二人で競争するように可愛がって回復した70代男性 語り手 70代男性 試したこと 孫の誕生 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 119</span>
+    <span class="case-title">孫が誕生してから二人で競争するように可愛がって回復した70代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性</dd></div><div><dt>試したこと</dt><dd>孫の誕生</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「孫が誕生してからふたりで競争するように孫をかわいがったから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="悪化の原因が子供に関することだったので子供の独立で解決した60代女性 語り手 60代女性 試したこと 子どもの独立 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 120</span>
+    <span class="case-title">悪化の原因が子供に関することだったので子供の独立で解決した60代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>子どもの独立</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫婦関係の悪化の原因は子供に関することがほとんどだったので、子供の独立をきっかけに解決した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="仕事優先で子育てに関与しなかった夫がリタイア後に家事を共同でして理解が増えた 語り手 70代男性 試したこと リタイアと家事の共同化 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 121</span>
+    <span class="case-title">仕事優先で子育てに関与しなかった夫がリタイア後に家事を共同でして理解が増えた</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性</dd></div><div><dt>試したこと</dt><dd>リタイアと家事の共同化</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「現役時代、仕事優先で子育てに関与しなかったが、リタイアしてから家事も共同でするようになり理解が増えたから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="定年で夫が家にいるのが耐えられず月2回子の家に泊まっていたら夫が家事を覚えた 語り手 60代女性 試したこと 定期的な物理的離脱と、その間に夫が家事を習得したこと ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 122</span>
+    <span class="case-title">定年で夫が家にいるのが耐えられず月2回子の家に泊まっていたら夫が家事を覚えた</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>定期的な物理的離脱と、その間に夫が家事を習得したこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「定年で家にいるようになり、一緒にいることがとても我慢できなくなって、月に2回、子ども達の家に泊まっていたが、その間に夫が家事ができるようになり、コロナ禍になってからは気にならない程度になった」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="自分の浮気で冷え切ったがその後ふたりで旅行に行って回復した70代男性 語り手 70代男性（浮気した側） 試したこと 二人での旅行 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 123</span>
+    <span class="case-title">自分の浮気で冷え切ったがその後ふたりで旅行に行って回復した70代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性（浮気した側）</dd></div><div><dt>試したこと</dt><dd>二人での旅行</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「自分の浮気で一度冷え切ったが、その後ふたりで旅行に行って回復した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="不倫がばれてとことん話し合ったから回復したという40代女性 語り手 40代女性 試したこと 不倫の発覚と徹底的な話し合い ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 124</span>
+    <span class="case-title">不倫がばれてとことん話し合ったから回復したという40代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>40代女性</dd></div><div><dt>試したこと</dt><dd>不倫の発覚と徹底的な話し合い</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「不倫がばれてとことん話し合ったから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="結婚早々に夫が浮気して冷え切ったが私が許したという60代女性 語り手 60代女性 試したこと 許すという自分の決断 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 125</span>
+    <span class="case-title">結婚早々に夫が浮気して冷え切ったが私が許したという60代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>許すという自分の決断</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「結婚早々に夫が浮気をして冷え切ったが、私が許した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="年齢を重ねて小さなことはどうでもよくなり親の介護で協力が必要になって修復 語り手 60代女性 試したこと 加齢による価値観の変化と、親の介護という共同課題 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 126</span>
+    <span class="case-title">年齢を重ねて小さなことはどうでもよくなり親の介護で協力が必要になって修復</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>加齢による価値観の変化と、親の介護という共同課題</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「年齢を重ね、小さなことはどうでもよくなった。またそのころからお互いの親の介護が始まり時間的にも協力しなければならなくなり、その内に修復した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="父の葬儀を切り盛りしてくれた妻に感謝を伝えたら途絶えていた会話が戻った70代男性 語り手 70代男性 試したこと 配偶者の行動への感謝の言語化 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 127</span>
+    <span class="case-title">父の葬儀を切り盛りしてくれた妻に感謝を伝えたら途絶えていた会話が戻った70代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性</dd></div><div><dt>試したこと</dt><dd>配偶者の行動への感謝の言語化</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「自分の父親が亡くなったときに葬儀を切り盛りして行動してくれた。私が感謝の言葉をかけてから、途絶えていた会話が回復したように思う」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="義理の母が原因で冷え切ったが亡くなったので関係が戻った60代女性 語り手 60代女性 試したこと 原因となっていた義母の死 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 128</span>
+    <span class="case-title">義理の母が原因で冷え切ったが亡くなったので関係が戻った60代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>試したこと</dt><dd>原因となっていた義母の死</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「義理の母が原因で冷え切ったが、亡くなったので関係が戻った」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="借金が発覚し信頼を失った夫が完済して信頼を取り戻した30代女性 語り手 30代女性 試したこと 夫が借金を完済して信頼を回復したこと ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 129</span>
+    <span class="case-title">借金が発覚し信頼を失った夫が完済して信頼を取り戻した30代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>30代女性</dd></div><div><dt>試したこと</dt><dd>夫が借金を完済して信頼を回復したこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「借金が発覚し信頼を失った夫が信頼を回復しようと頑張った結果、借金完済したから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="借金発覚で大喧嘩したが夫が家事と習い事の送迎をするようになって修復 語り手 50代女性 試したこと 夫の家事・育児参加という行動での埋め合わせ ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 130</span>
+    <span class="case-title">借金発覚で大喧嘩したが夫が家事と習い事の送迎をするようになって修復</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>50代女性</dd></div><div><dt>試したこと</dt><dd>夫の家事・育児参加という行動での埋め合わせ</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「旦那が過去に借金をしたことが発覚し、大喧嘩の末冷え切ってしまったが、旦那が家事、子供の習い事の送迎など手伝うようになり修復した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="夫が新興宗教にハマり両親まで巻き込んで真剣に離婚を考えた60代女性 語り手 60代女性 悪化の中心 夫が新興宗教団体・ネズミ講のような団体にハマったこと 試したこと 妻が団体を明確に拒否し、金を出さず、紹介者と絶縁したこと 記録上の結末 団体との付き合いが消え、関係が回復 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 131</span>
+    <span class="case-title">夫が新興宗教にハマり両親まで巻き込んで真剣に離婚を考えた60代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div><div><dt>悪化の中心</dt><dd>夫が新興宗教団体・ネズミ講のような団体にハマったこと</dd></div><div><dt>試したこと</dt><dd>妻が団体を明確に拒否し、金を出さず、紹介者と絶縁したこと</dd></div><div><dt>記録上の結末</dt><dd>団体との付き合いが消え、関係が回復</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「新興宗教団体、ネズミ講のような団体に夫がハマったとき。真剣に離婚を考え、両親まで巻き込んだ。私がその団体を拒否して受け入れず、お金も出さなかったので団体と付き合いがなくなっていった。団体を紹介してきた夫の友人とは絶縁しました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="飲酒量が多く将来を危ぶまれたが仕事上の飲みを減らして落ち着いた70代男性 語り手 70代男性 悪化の中心 自分の飲酒量の多さ 試したこと 仕事上の飲む機会を減らしたこと 記録上の結末 落ち着いた（現在は夫婦で適量を飲んでいる） ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 132</span>
+    <span class="case-title">飲酒量が多く将来を危ぶまれたが仕事上の飲みを減らして落ち着いた70代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性</dd></div><div><dt>悪化の中心</dt><dd>自分の飲酒量の多さ</dd></div><div><dt>試したこと</dt><dd>仕事上の飲む機会を減らしたこと</dd></div><div><dt>記録上の結末</dt><dd>落ち着いた（現在は夫婦で適量を飲んでいる）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「私の飲酒量が多かった時期に、将来を危うんだこともあったようだが、仕事上の飲む機会を減らした結果、落ち着くようになった。妻も飲める口なので。ふたりで毎晩適量飲んでいる範囲であれば現状問題はない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="仕事と家庭のバランスが崩れたとき相手の話をよく聞いて対応を変えた70代男性 語り手 70代男性 試したこと 相手の話を聞き、納得する対応に変えたこと ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 133</span>
+    <span class="case-title">仕事と家庭のバランスが崩れたとき相手の話をよく聞いて対応を変えた70代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>70代男性</dd></div><div><dt>試したこと</dt><dd>相手の話を聞き、納得する対応に変えたこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「仕事と家庭のバランスが崩れたとき、よく相手の話を聞き、納得する対応に変えて回復できました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="良いことも悪いことも共有するというルールを確認して回復した50代男性 語り手 50代男性 試したこと 情報共有のルールを明示的に確認したこと ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 134</span>
+    <span class="case-title">良いことも悪いことも共有するというルールを確認して回復した50代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>50代男性</dd></div><div><dt>試したこと</dt><dd>情報共有のルールを明示的に確認したこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「お互いに良いことも悪いことも共有するルールを確認したので」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="しばらく実家に帰っていましたという50代女性 語り手 50代女性 試したこと 一時的な実家への帰省 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 135</span>
+    <span class="case-title">しばらく実家に帰っていましたという50代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>50代女性</dd></div><div><dt>試したこと</dt><dd>一時的な実家への帰省</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「しばらく実家に帰っていました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="少し離れて距離をおいた結果回復した60代男性 語り手 60代男性 試したこと 距離を置いたこと ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 136</span>
+    <span class="case-title">少し離れて距離をおいた結果回復した60代男性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代男性</dd></div><div><dt>試したこと</dt><dd>距離を置いたこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「少し離れて距離をおいた結果」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="子供が大きくなって二人の時間ができ旅行に行くようになって回復した40代女性 語り手 40代女性 試したこと 子の成長による二人の時間の回復 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 137</span>
+    <span class="case-title">子供が大きくなって二人の時間ができ旅行に行くようになって回復した40代女性</span>
+    <span class="status">回復した</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>40代女性</dd></div><div><dt>試したこと</dt><dd>子の成長による二人の時間の回復</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子供が大きくなってからふたりの時間が出来て旅行に行くようになって回復した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="娘の家族画をきっかけに家族療法を受け会話を取り戻した夫婦 語り手 妻（37歳、看護師） 家族 夫、娘 悪化の中心 数年間の会話断絶と相互回避 試したこと 夫婦で受けた家族療法 記録上の結末 改善 chanto web「家族関係まで破たん寸前“仮面夫婦”修復に効果的だった方法」">
+  <summary>
+    <span class="case-id">事例 161</span>
+    <span class="case-title">娘の家族画をきっかけに家族療法を受け会話を取り戻した夫婦</span>
+    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（37歳、看護師）</dd></div><div><dt>家族</dt><dd>夫、娘</dd></div><div><dt>悪化の中心</dt><dd>数年間の会話断絶と相互回避</dd></div><div><dt>試したこと</dt><dd>夫婦で受けた家族療法</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>仮面夫婦の状態が数年続き、夫婦はほとんど話さず、時間も共有していなかった。年長の娘が描いた家族の絵では、3人が別々の家に入っていた。</p>
+<h4>やったこと</h4>
+<p>娘があまり話さないことも心配して医療機関へ相談し、夫婦で家族療法を受けた。面談中、妻が話すと夫が外を見て、夫が話すと妻も外を見ることを指摘され、互いに向き合うことを避けていたと気づいた。</p>
+<h4>結果</h4>
+<p>ぎこちなさは残ったものの、生活の中で少しずつ会話が戻った。娘が小学校に上がったころに再び描いた家族画では、3人が同じ家の中に描かれていた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://chanto.jp.net/articles/-/123115?display=b" target="_blank" rel="noreferrer">CHANTO WEB「家族関係まで破たん寸前“仮面夫婦”修復に効果的だった方法」</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="300万円の借金で別居し完済後に家を建てた夫婦 語り手 夫（45歳） 家族 妻、子ども 悪化の中心 結婚前から隠していた約300万円の借金 試したこと 別居中の債務整理と返済の継続 記録上の結末 改善 mincoto「離婚危機・夫婦関係破綻を回避し修復した！という5人に体験談を聞いてみた」">
+  <summary>
+    <span class="case-id">事例 162</span>
+    <span class="case-title">300万円の借金で別居し完済後に家を建てた夫婦</span>
+    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫（45歳）</dd></div><div><dt>家族</dt><dd>妻、子ども</dd></div><div><dt>悪化の中心</dt><dd>結婚前から隠していた約300万円の借金</dd></div><div><dt>試したこと</dt><dd>別居中の債務整理と返済の継続</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>結婚から1年以内に子どもが生まれたが、夫には独身時代から約300万円の借金があり、返済不能になって妻へ打ち明けた。両家を交えた話し合いの後、アパートを引き払い、それぞれの実家で別居した。</p>
+<h4>やったこと</h4>
+<p>妻は「借金を返し終わったらやり直したい」と伝えた。夫は債務整理を相談し、残額を約100万円、月々の返済を5万円に組み直した。妻が金銭管理を担い、返済日には2人で入金した。</p>
+<h4>結果</h4>
+<p>2年で返済を終えた。その後はアパートを借りずに頭金を貯め、家を購入した。妻は実家と新居を行き来する生活を残しているが、夫は「今ではとても仲良くやっている」と述べている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://mincoto.com/rikonkiki/" target="_blank" rel="noreferrer">mincoto「離婚危機・夫婦関係破綻を回避し修復した！という5人に体験談を聞いてみた」</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="心身が限界で実家へ戻り離婚の話し合いから関係を再構築 語り手 妻（28歳） 悪化の中心 仕事上の問題、多忙、精神疾患の再発 試したこと 一時帰省と離婚を覚悟した率直な対話 記録上の結末 改善 mincoto「離婚危機・夫婦関係破綻を回避し修復した！という5人に体験談を聞いてみた」">
+  <summary>
+    <span class="case-id">事例 163</span>
+    <span class="case-title">心身が限界で実家へ戻り離婚の話し合いから関係を再構築</span>
+    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（28歳）</dd></div><div><dt>悪化の中心</dt><dd>仕事上の問題、多忙、精神疾患の再発</dd></div><div><dt>試したこと</dt><dd>一時帰省と離婚を覚悟した率直な対話</dd></div><div><dt>記録上の結末</dt><dd>改善</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>結婚2年目、仕事上の問題と多忙が重なり、精神疾患も再発した。2人でいるとパニック発作、叫び、涙が起きる状態となり、同居を続けられなくなった。</p>
+<h4>やったこと</h4>
+<p>妻は実家へ戻り、仕事も辞めて冷静になる時間を取った。離婚を決めて話を切り出したが、その場で初めて本心をぶつけ、夫も本気で応じた。互いが何を考え、どれだけ相手を大切に思っているかを話し切った。</p>
+<h4>結果</h4>
+<p>語り手は、以前より強い絆ができ、現在は仲が良く、相手を信じる気持ちは消えないと述べている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://mincoto.com/rikonkiki/" target="_blank" rel="noreferrer">mincoto「離婚危機・夫婦関係破綻を回避し修復した！という5人に体験談を聞いてみた」</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case recovered" data-search="ギャンブルと暴言で2年別居し自助グループを経て再同居 語り手 妻（40代） 家族 夫、子ども2人 悪化の中心 夫のギャンブルによる生活費の使い込み、暴言 試したこと 別居、家族向け自助グループ、境界線の再設定 記録上の結末 改善途上 全国ギャンブル依存症家族の会「体験談（令和4年7月掲載）」no.11">
+  <summary>
+    <span class="case-id">事例 164</span>
+    <span class="case-title">ギャンブルと暴言で2年別居し自助グループを経て再同居</span>
+    <span class="status">回復した</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（40代）</dd></div><div><dt>家族</dt><dd>夫、子ども2人</dd></div><div><dt>悪化の中心</dt><dd>夫のギャンブルによる生活費の使い込み、暴言</dd></div><div><dt>試したこと</dt><dd>別居、家族向け自助グループ、境界線の再設定</dd></div><div><dt>記録上の結末</dt><dd>改善途上</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>夫は生活費やボーナスをパチンコに使い、妻は帰宅連絡、所持品確認、誓約書、離婚届、精神科受診まで試したが再発した。夫は金銭の話で怒鳴るようになり、夫婦関係が悪化した。</p>
+<h4>やったこと</h4>
+<p>妻は民間支援団体の相談会と家族向け自助グループへつながり、自分が夫を管理する関係を見直した。別居を約2年続け、夫とは別の人生を選べることも確認したうえで再同居を決めた。</p>
+<h4>結果</h4>
+<p>再同居後、夫のギャンブルは止まっていると語られている。妻は、離れて境界線を引いたことで関係が変わり、夫との関係と家族との関わりが新しく心地よいものになってきたと述べている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.ncasa-japan.jp/pdf/document60.pdf" target="_blank" rel="noreferrer">全国ギャンブル依存症家族の会「体験談（令和4年7月掲載）」No.11</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details></div>
+</section>
+
+<section id="not-recovered" class="outcome-section">
+  <div class="section-heading">
+    <div><p class="eyebrow">Outcome 02</p><h2>回復しなかった事例と、その内容</h2></div>
+    <span class="count" data-total="64">64件</span>
+  </div>
+  <div class="case-list">
+<details class="case not-recovered" data-search="再構築1年半 表面上は仲良しでもテーマパークに行けない妻 語り手 妻（アラフィフ） 悪化の中心 夫の浮気（本人評「お遊び程度」） 試したこと 再構築を選択 記録上の結末 継続中だが感情は未消化 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 022</span>
+    <span class="case-title">再構築1年半 表面上は仲良しでもテーマパークに行けない妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（アラフィフ）</dd></div><div><dt>悪化の中心</dt><dd>夫の浮気（本人評「お遊び程度」）</dd></div><div><dt>試したこと</dt><dd>再構築を選択</dd></div><div><dt>記録上の結末</dt><dd>継続中だが感情は未消化</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>2年前に夫の浮気が発覚。離婚せず再構築を選んで1年半。</p>
+<h4>現在</h4>
+<p>表面上は仲良し夫婦。しかし「裏切られた」という苦い感情が何度も蘇る。夫が浮気相手と行ったテーマパークには行けず、関連の場所を通るだけで不安になる。夫を信じたいが信じ切れない葛藤を抱えている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="許していない 同じ墓に入る予定はないと決めて再構築を続ける妻 語り手 妻 悪化の中心 夫の不倫 試したこと （感情的には修復せず）生活だけ継続 記録上の結末 婚姻継続・内心は不許 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 026</span>
+    <span class="case-title">許していない 同じ墓に入る予定はないと決めて再構築を続ける妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫</dd></div><div><dt>試したこと</dt><dd>（感情的には修復せず）生活だけ継続</dd></div><div><dt>記録上の結末</dt><dd>婚姻継続・内心は不許</dd></div></dl>
+    <div class="narrative"><h4>心境</h4>
+<p>許していない。一生根に持つつもり。態度には出していないが、同じ墓に入る予定はない。子どもにも状況を説明し、子どもも納得している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="2年で許せず5年でかさぶた10年経っても時々痛む 語り手 妻 悪化の中心 夫の不倫 試したこと 時間 記録上の結末 10年以上経過し痛みは残るが生活は継続 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 028</span>
+    <span class="case-title">2年で許せず5年でかさぶた10年経っても時々痛む</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫</dd></div><div><dt>試したこと</dt><dd>時間</dd></div><div><dt>記録上の結末</dt><dd>10年以上経過し痛みは残るが生活は継続</dd></div></dl>
+    <div class="narrative"><h4>経過</h4>
+<ul><li>2年時点：まったく許せなかった</li><li>5年目：ようやく傷がかさぶたになった</li><li>10年以上経った現在：それでも時々痛みが走る</li></ul></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="結婚25年 子ども2人を授かった後レスになり会話も必要最低限に 語り手 妻（結婚25年） 家族 子ども2人 悪化の中心 子づくり終了後のセックスレスの常態化 試したこと （未解決）趣味と仕事への没頭 記録上の結末 会話も必要最低限の関係 たまひよ「夫からのセックスレスに悩む妻たちの声」">
+  <summary>
+    <span class="case-id">事例 031</span>
+    <span class="case-title">結婚25年 子ども2人を授かった後レスになり会話も必要最低限に</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（結婚25年）</dd></div><div><dt>家族</dt><dd>子ども2人</dd></div><div><dt>悪化の中心</dt><dd>子づくり終了後のセックスレスの常態化</dd></div><div><dt>試したこと</dt><dd>（未解決）趣味と仕事への没頭</dd></div><div><dt>記録上の結末</dt><dd>会話も必要最低限の関係</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>レス期間は思い出せないほど長い。子ども2人ともに1回で授かり、その後レスに。</p>
+<h4>心境</h4>
+<p>「このまま女として終わるのかと思うと虚しい」。夫との会話は必要最低限になっている。</p>
+<h4>対処</h4>
+<p>趣味や仕事に没頭している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=158552" target="_blank" rel="noreferrer">たまひよ「夫からのセックスレスに悩む妻たちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもとのセットとしか見られないと言われ38歳で吹っ切れた妻 語り手 妻（29歳〜38歳がレス期） 悪化の中心 夫が妻を「家族」としてしか見られなくなった 試したこと （関係修復ではなく）自分の中での断念と没頭先の確保 記録上の結末 38歳で吹っ切れた たまひよ「夫からのセックスレスに悩む妻たちの声」">
+  <summary>
+    <span class="case-id">事例 039</span>
+    <span class="case-title">子どもとのセットとしか見られないと言われ38歳で吹っ切れた妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（29歳〜38歳がレス期）</dd></div><div><dt>悪化の中心</dt><dd>夫が妻を「家族」としてしか見られなくなった</dd></div><div><dt>試したこと</dt><dd>（関係修復ではなく）自分の中での断念と没頭先の確保</dd></div><div><dt>記録上の結末</dt><dd>38歳で吹っ切れた</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>夫から「家族として大切だが、子どもとのセットとしか見られない」と告白された。</p>
+<h4>苦しかった時期の描写</h4>
+<p>「精神的にかなり病む時期。浮遊感、壁が迫ってくる感覚、人目はばからず発情する猫になりたいと思う」。</p>
+<h4>結果</h4>
+<p>38歳で吹っ切れた。「趣味や仕事に没頭して悩む時間をなくす」ことで折り合いをつけた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=158552" target="_blank" rel="noreferrer">たまひよ「夫からのセックスレスに悩む妻たちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="妻の不倫を再構築したが誓約書を書かせなかったことを後悔する夫 語り手 夫 悪化の中心 妻の不倫 試したこと （実質的な修復行動が起きていない） 記録上の結末 不満が募る状態 npo法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」">
+  <summary>
+    <span class="case-id">事例 044</span>
+    <span class="case-title">妻の不倫を再構築したが誓約書を書かせなかったことを後悔する夫</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫</dd></div><div><dt>悪化の中心</dt><dd>妻の不倫</dd></div><div><dt>試したこと</dt><dd>（実質的な修復行動が起きていない）</dd></div><div><dt>記録上の結末</dt><dd>不満が募る状態</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>妻の不倫が発覚し、再構築を決めた。しかし半年経っても「不倫前と何も変わらない日々」で、妻側に修復への行動が見られない。</p>
+<h4>後悔</h4>
+<p>誓約書を書かせなかったことを悔やんでいる。</p></div>
+    <p class="source"><span>出典</span> <a href="https://npoyotuba.com/topics/affair-reconstruction.html" target="_blank" rel="noreferrer">NPO法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="流産のときオレだってつらいと怒鳴られ10年間の同居人状態に 語り手 ミオリさん（40歳）／夫タクヤさん 家族 結婚11年、うち10年が同居人状態 悪化の中心 流産という危機のときの反応のすれ違い 試したこと （修復せず）不倫を経ても現状のまま 記録上の結末 仮面夫婦の継続／本人は「何かを間違えたんだと思う」 女子spa！「離婚覚悟で不倫したのに、10年続く仮面夫婦関係『何かを間違えたんだと思う』」">
+  <summary>
+    <span class="case-id">事例 051</span>
+    <span class="case-title">流産のときオレだってつらいと怒鳴られ10年間の同居人状態に</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>ミオリさん（40歳）／夫タクヤさん</dd></div><div><dt>家族</dt><dd>結婚11年、うち10年が同居人状態</dd></div><div><dt>悪化の中心</dt><dd>流産という危機のときの反応のすれ違い</dd></div><div><dt>試したこと</dt><dd>（修復せず）不倫を経ても現状のまま</dd></div><div><dt>記録上の結末</dt><dd>仮面夫婦の継続／本人は「何かを間違えたんだと思う」</dd></div></dl>
+    <div class="narrative"><h4>悪化の起点</h4>
+<p>結婚直後の流産が転機だった。ミオリさんはショックで泣いてばかりだったが、夫は無口になり、やがて「ミオリだけが苦しいんじゃない、オレだってつらいんだよ」と怒鳴って深夜に家を出て行った。ミオリさんは夫を「思いやりがない」と非難し、以後ギクシャクした関係が定着した。</p>
+<h4>その後</h4>
+<p>離婚覚悟で不倫をしたが、結局10年続く仮面夫婦関係のまま。</p>
+<h4>本人の振り返り</h4>
+<p>「これでいいのかな」と疑い続けている。結婚当初は二人とも「別に結婚しなくてもいいよね」という関係だったことから、「何かを間違えたんだと思う」と語る。</p></div>
+    <p class="source"><span>出典</span> <a href="https://joshi-spa.jp/1143719" target="_blank" rel="noreferrer">女子SPA！「離婚覚悟で不倫したのに、10年続く仮面夫婦関係『何かを間違えたんだと思う』」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="10年のレスを機に外にパートナーを作った人 語り手 回答者（性別不明） 悪化の中心 10年に及ぶセックスレス 試したこと （修復せず）婚外にパートナーを作る 記録上の結末 婚姻は継続 yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」">
+  <summary>
+    <span class="case-id">事例 091</span>
+    <span class="case-title">10年のレスを機に外にパートナーを作った人</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（性別不明）</dd></div><div><dt>悪化の中心</dt><dd>10年に及ぶセックスレス</dd></div><div><dt>試したこと</dt><dd>（修復せず）婚外にパートナーを作る</dd></div><div><dt>記録上の結末</dt><dd>婚姻は継続</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「10年のレスを機に外にパートナーを作りました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12302113512" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="妻がもう無理と言うので外注し妻は知っていて知らないふりをしている 語り手 夫（回答者） 悪化の中心 妻が性的関係を望まなくなった 試したこと （修復せず）夫が婚外で解決し、妻が黙認 記録上の結末 暗黙の合意による現状維持 yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」">
+  <summary>
+    <span class="case-id">事例 094</span>
+    <span class="case-title">妻がもう無理と言うので外注し妻は知っていて知らないふりをしている</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫（回答者）</dd></div><div><dt>悪化の中心</dt><dd>妻が性的関係を望まなくなった</dd></div><div><dt>試したこと</dt><dd>（修復せず）夫が婚外で解決し、妻が黙認</dd></div><div><dt>記録上の結末</dt><dd>暗黙の合意による現状維持</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「妻がもう無理というので、外注することにしました。妻は外注を了承しているわけではないのですが、知っていても知らないふりをしてくれています」</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12302113512" target="_blank" rel="noreferrer">Yahoo!知恵袋「セックスレスの方はどう乗り越えましたか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="許す必要はなく趣味など他の充実に向き直せばよいという回答 語り手 回答者（経験者） 悪化の中心 配偶者の不倫 試したこと 許しではなく、関心を他へ移す 記録上の結末 時間経過で浮き沈みが小さくなる yahoo!知恵袋「不倫された経験のある方…」ベストアンサー">
+  <summary>
+    <span class="case-id">事例 096</span>
+    <span class="case-title">許す必要はなく趣味など他の充実に向き直せばよいという回答</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（経験者）</dd></div><div><dt>悪化の中心</dt><dd>配偶者の不倫</dd></div><div><dt>試したこと</dt><dd>許しではなく、関心を他へ移す</dd></div><div><dt>記録上の結末</dt><dd>時間経過で浮き沈みが小さくなる</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>時間の経過とともに感情の浮き沈みは小さくなる。許す必要はなく、趣味など他の充実へ向き直すことが大切だと述べる。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14314834509" target="_blank" rel="noreferrer">Yahoo!知恵袋「不倫された経験のある方…」ベストアンサー</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="信頼関係は戻らないのが普通 家庭内の優位性を使って別の楽しみを見つける 語り手 回答者（経験者） 悪化の中心 配偶者の不倫 試したこと （修復しない前提での）力関係の再設定 記録上の結末 現実的な折り合い yahoo!知恵袋「不倫された経験のある方…」">
+  <summary>
+    <span class="case-id">事例 097</span>
+    <span class="case-title">信頼関係は戻らないのが普通 家庭内の優位性を使って別の楽しみを見つける</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（経験者）</dd></div><div><dt>悪化の中心</dt><dd>配偶者の不倫</dd></div><div><dt>試したこと</dt><dd>（修復しない前提での）力関係の再設定</dd></div><div><dt>記録上の結末</dt><dd>現実的な折り合い</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「信頼関係は戻らないと思う。それが普通」と明言したうえで、許さずに家庭を支配できる優位性を活用し、別の楽しみを見つけるという現実的なアプローチを提示している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14314834509" target="_blank" rel="noreferrer">Yahoo!知恵袋「不倫された経験のある方…」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="5年の不倫が終わり2年目 フラッシュバックで通院しながら今を楽しむのが最大の復讐 語り手 回答者（当事者） 悪化の中心 配偶者の5年間の不倫 試したこと （治療を受けつつ）自分の生活の充実 記録上の結末 通院中／継続中 yahoo!知恵袋「不倫された経験のある方…」">
+  <summary>
+    <span class="case-id">事例 098</span>
+    <span class="case-title">5年の不倫が終わり2年目 フラッシュバックで通院しながら今を楽しむのが最大の復讐</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>回答者（当事者）</dd></div><div><dt>悪化の中心</dt><dd>配偶者の5年間の不倫</dd></div><div><dt>試したこと</dt><dd>（治療を受けつつ）自分の生活の充実</dd></div><div><dt>記録上の結末</dt><dd>通院中／継続中</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「5年の不倫が終わり2年目。フラッシュバックに苦しみ通院中」。そのうえで「許す必要はない。今を楽しむことが最大の復讐」と述べている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14314834509" target="_blank" rel="noreferrer">Yahoo!知恵袋「不倫された経験のある方…」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="家では最低限の話しかしない仮面夫婦の妻 語り手 既婚女性（40代・東京都・子ども1人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 099</span>
+    <span class="case-title">家では最低限の話しかしない仮面夫婦の妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「家では最低限の話しかしませんが、夫は外ではそんな素振りを見せません」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="必要なことはlineで十分という同居の夫婦 語り手 既婚女性（30代・福岡県・子ども3人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 100</span>
+    <span class="case-title">必要なことはLINEで十分という同居の夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・福岡県・子ども3人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「家ではあまり会話しません。必要な事は、LINEのやりとりで十分」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもを介してしか会話しない夫婦 語り手 既婚女性（40代・奈良県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 101</span>
+    <span class="case-title">子どもを介してしか会話しない夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・奈良県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもを介してしか、会話しない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="話しかけてもうんしか言わない夫 語り手 既婚女性（30代・宮城県・子ども1人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 102</span>
+    <span class="case-title">話しかけてもうんしか言わない夫</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・宮城県・子ども1人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「私から話しかけても、夫は『うん』しか言いません。もう慣れてしまいました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="家ではほとんど会話がないのに実家に行けば普通に会話する夫婦 語り手 既婚女性（40代・埼玉県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 103</span>
+    <span class="case-title">家ではほとんど会話がないのに実家に行けば普通に会話する夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・埼玉県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「家にいるときはほとんど会話もないし、同じ空間にいないけれど、実家に行けば普通に会話もする」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="家では嫌味みたいなことしか喋らないが外ではまだ少しマシ 語り手 既婚女性（30代・愛知県・子ども1人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 104</span>
+    <span class="case-title">家では嫌味みたいなことしか喋らないが外ではまだ少しマシ</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・愛知県・子ども1人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「家の中ではお互いに嫌味みたいなことしか喋らないけれど、外ではまだ少しマシ」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="友達の前だと会話が増える夫婦 語り手 既婚女性（30代・岡山県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 105</span>
+    <span class="case-title">友達の前だと会話が増える夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・岡山県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「普段はそこまで会話はないが、友達などの前だと会話が増えます」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="シンプルに好きじゃないという理由の仮面夫婦 語り手 既婚女性（40代・東京都・子ども1人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 106</span>
+    <span class="case-title">シンプルに好きじゃないという理由の仮面夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「シンプルに好きじゃない。かといって新婚のときは好きだったのかというと、それも自信がありません」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="離婚条件を公正証書に記してあり不利だから一緒にいる妻 語り手 既婚女性（30代・兵庫県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 107</span>
+    <span class="case-title">離婚条件を公正証書に記してあり不利だから一緒にいる妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・兵庫県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「本当に一緒にいたいわけではない。離婚条件を公正証書に記してあり不利だから離婚しない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="話が噛み合わないから一緒にいたくないという妻 語り手 既婚女性（40代・香川県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 108</span>
+    <span class="case-title">話が噛み合わないから一緒にいたくないという妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・香川県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「話が噛み合わない。あまり一緒にいたくない。ご飯を食べたらすぐスマホをしている」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもがいなかったらすぐに離婚すると語る妻 語り手 既婚女性（30代・埼玉県・子ども4人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 109</span>
+    <span class="case-title">子どもがいなかったらすぐに離婚すると語る妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・埼玉県・子ども4人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもがいなかったら、すぐに離婚すると思います」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="仲が悪くても子どもの前では仲がいいふりをしている夫婦 語り手 既婚女性（30代・山口県・子ども1人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 110</span>
+    <span class="case-title">仲が悪くても子どもの前では仲がいいふりをしている夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・山口県・子ども1人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「仲が悪くても子どもの前では、仲がいいふりをしているから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="単身赴任中の夫がどんな生活をしているのか知ろうとも思わない妻 語り手 既婚女性（40代・新潟県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 111</span>
+    <span class="case-title">単身赴任中の夫がどんな生活をしているのか知ろうとも思わない妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・新潟県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「単身赴任をしているため一緒に暮らしていないが、相手がどんな生活をしているのか知ろうとも思わない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫が過去に浮気した恨みを抱えたまま仮面夫婦を続ける妻 語り手 既婚女性（40代・岐阜県・子ども2人） domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」">
+  <summary>
+    <span class="case-id">事例 112</span>
+    <span class="case-title">夫が過去に浮気した恨みを抱えたまま仮面夫婦を続ける妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・岐阜県・子ども2人）</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫が過去に浮気した恨みがあるから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="都内持ち家があるから離婚しない夫婦 ソロ活最高と割り切る妻 語り手 質問者（結婚10年）とベストアンサー回答者 悪化の中心 夫の激務で一緒に過ごす時間がなく、無感情な関係になった 試したこと （修復せず）一人の時間を積極的に楽しむ 記録上の結末 割り切って継続 yahoo!知恵袋「冷え切った夫婦仲を割り切って続ける方法」">
+  <summary>
+    <span class="case-id">事例 113</span>
+    <span class="case-title">都内持ち家があるから離婚しない夫婦 ソロ活最高と割り切る妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>質問者（結婚10年）とベストアンサー回答者</dd></div><div><dt>悪化の中心</dt><dd>夫の激務で一緒に過ごす時間がなく、無感情な関係になった</dd></div><div><dt>試したこと</dt><dd>（修復せず）一人の時間を積極的に楽しむ</dd></div><div><dt>記録上の結末</dt><dd>割り切って継続</dd></div></dl>
+    <div class="narrative"><h4>質問者の状況</h4>
+<p>夫婦歴10年。共有財産や都内の持ち家があるため離婚は互いに考えていない。しかし仲良く過ごすのは難しい。相手は激務で休日も仕事が多く、一緒に過ごす時間がない。無感情な夫婦関係を割り切る方法を求めている。</p>
+<h4>回答者の体験</h4>
+<p>「一人で過ごした方が、気を遣わなくて楽しいことに気付きました。夫婦で旅行って、仲がよさそうに見えますが実際は旅先でのストレスが半端ないですよ。旅行だからこそ、一人で満喫！おひとり様！ソロ活最高です！」</p>
+<p>相手への不満を気に留めず、独立した人生を楽しむことが冷え切った関係を継続するコツだとしている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11302460336" target="_blank" rel="noreferrer">Yahoo!知恵袋「冷え切った夫婦仲を割り切って続ける方法」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="離婚を考え家出したこともあったが子供のことを考えて思い直した40代女性 語り手 40代女性 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 117</span>
+    <span class="case-title">離婚を考え家出したこともあったが子供のことを考えて思い直した40代女性</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>40代女性</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「一度は離婚も考え家出したこともあったけど、子供のことを考えて思い直した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子供のために我慢したという50代女性 語り手 50代女性 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 118</span>
+    <span class="case-title">子供のために我慢したという50代女性</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>50代女性</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子供のために我慢した」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="何度もあるがなんとなくズルズルと別れずに暮らして乗り越えた60代女性 語り手 60代女性 ロバ耳（モラタメ調査）">
+  <summary>
+    <span class="case-id">事例 138</span>
+    <span class="case-title">何度もあるがなんとなくズルズルと別れずに暮らして乗り越えた60代女性</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>60代女性</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「何度もある。なんとなくズルズルと別れずに暮らして乗り越えた」</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.moratame.net/wp/robamimi/202211_011/" target="_blank" rel="noreferrer">ロバ耳（モラタメ調査）</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫を信用できず義務感だけで一緒にいる妻 語り手 既婚女性（40代・神奈川県・子ども2人） 悪化の中心 信用の喪失 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 140</span>
+    <span class="case-title">夫を信用できず義務感だけで一緒にいる妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・神奈川県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>信用の喪失</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫のことをまったく信用できず、義務感だけで一緒にいるから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="恋愛結婚だが1年で冷めどこの家庭も仮面夫婦の要素はあると語る妻 語り手 既婚女性（40代・東京都・子ども1人） 悪化の中心 結婚1年以内の感情の消失 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 141</span>
+    <span class="case-title">恋愛結婚だが1年で冷めどこの家庭も仮面夫婦の要素はあると語る妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>結婚1年以内の感情の消失</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「恋愛結婚でしたが、1年もしないうちに気持ちは冷めましたね。そして子どもができてからは、男女という感じではなく、かといって仲のいい男友達は別にいます。多かれ少なかれ、どこの家庭も仮面夫婦の要素はあるんじゃないでしょうか」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="仲が良くないしすぐ喧嘩すると語る妻 語り手 既婚女性（30代・東京都・子ども1人） 悪化の中心 頻繁な喧嘩 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 142</span>
+    <span class="case-title">仲が良くないしすぐ喧嘩すると語る妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>頻繁な喧嘩</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「仲が良くないし、すぐ喧嘩します」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもが産まれてからケンカが増えた 語り手 既婚女性（40代・奈良県・子ども2人） 悪化の中心 出産後の喧嘩の増加 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 143</span>
+    <span class="case-title">子どもが産まれてからケンカが増えた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・奈良県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>出産後の喧嘩の増加</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもが産まれてから、ケンカが増えた」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子育てでゆっくり話す機会が減った 語り手 既婚女性（30代・岡山県・子ども2人） 悪化の中心 子育てによる会話時間の消失 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 144</span>
+    <span class="case-title">子育てでゆっくり話す機会が減った</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・岡山県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>子育てによる会話時間の消失</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子育てで、ゆっくり話す機会が減った」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもができても夫がなにも変わらない 語り手 既婚女性（30代・愛知県・子ども1人） 悪化の中心 出産後も夫の生活が変わらないこと domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 145</span>
+    <span class="case-title">子どもができても夫がなにも変わらない</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・愛知県・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>出産後も夫の生活が変わらないこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもができても夫がなにも変わらないことから、喧嘩が増えました」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="共働きで時間がすれ違う 語り手 既婚女性（40代・埼玉県・子ども2人） 悪化の中心 共働きによる時間のすれ違い domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 146</span>
+    <span class="case-title">共働きで時間がすれ違う</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・埼玉県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>共働きによる時間のすれ違い</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「お互い働いていて、時間のすれ違いから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="大きな原因はなく小さな不満が募った 語り手 既婚女性（30代・宮城県・子ども2人） 悪化の中心 小さな不満の蓄積 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 147</span>
+    <span class="case-title">大きな原因はなく小さな不満が募った</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・宮城県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>小さな不満の蓄積</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「何か大きな原因があったわけではなくても、小さな相手への不満が募って」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="してほしいことを夫がしてくれない 語り手 既婚女性（30代・山口県・子ども1人） 悪化の中心 期待が満たされないこと domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 148</span>
+    <span class="case-title">してほしいことを夫がしてくれない</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・山口県・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>期待が満たされないこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「私がして欲しいことを、夫がしてくれないから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="家事育児の協力がまったくない 語り手 既婚女性（30代・福岡県・子ども3人） 悪化の中心 家事育児の不参加 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 149</span>
+    <span class="case-title">家事育児の協力がまったくない</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・福岡県・子ども3人）</dd></div><div><dt>悪化の中心</dt><dd>家事育児の不参加</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「家事、育児の協力がまったくないから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫が子育てに非協力的で当事者意識がない 語り手 既婚女性（40代・京都府・子ども1人） 悪化の中心 夫の当事者意識の欠如 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 150</span>
+    <span class="case-title">夫が子育てに非協力的で当事者意識がない</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・京都府・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>夫の当事者意識の欠如</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫が子育てに非協力的、当事者意識がありません」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫が勤務先でダブル不倫をしていた 語り手 既婚女性（40代・兵庫県・子ども2人） 悪化の中心 夫のダブル不倫 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 151</span>
+    <span class="case-title">夫が勤務先でダブル不倫をしていた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・兵庫県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>夫のダブル不倫</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫が勤務先でダブル不倫をしていことが発覚してから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="妊娠中に夫が出会い系サイトに登録していた 語り手 既婚女性（40代・東京都・子ども1人） 悪化の中心 妊娠中の夫の出会い系サイト登録 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 152</span>
+    <span class="case-title">妊娠中に夫が出会い系サイトに登録していた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>妊娠中の夫の出会い系サイト登録</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫が私の妊娠中に出会い系サイトに登録していたのを発見したから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="教育方針が分かれ口も出さないが話すこともない 語り手 既婚女性（40代・東京都・子ども1人） 悪化の中心 教育方針の対立 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 153</span>
+    <span class="case-title">教育方針が分かれ口も出さないが話すこともない</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>教育方針の対立</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもの教育方針が完全に分かれてから。教育費を出す夫には口も出さないが、話すこともない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもが大きくなり話し合う必要もなくなった 語り手 既婚女性（40代・高知県・子ども2人） 悪化の中心 子の成長による話し合う必要の消失 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 154</span>
+    <span class="case-title">子どもが大きくなり話し合う必要もなくなった</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・高知県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>子の成長による話し合う必要の消失</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「子どもが大きくなってからは、夫婦で話し合うことも必要なく、そのまま…」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="人が大事にしているものを大事にできない人だった 語り手 既婚女性（40代・東京都・子ども1人） 悪化の中心 価値観の違い domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 155</span>
+    <span class="case-title">人が大事にしているものを大事にできない人だった</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>価値観の違い</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「人が大事にしているものを大事にできない人だったから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="性格が正反対で喧嘩が少しずつ増えた 語り手 既婚女性（30代・埼玉県・子ども4人） 悪化の中心 性格の不一致 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 156</span>
+    <span class="case-title">性格が正反対で喧嘩が少しずつ増えた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・埼玉県・子ども4人）</dd></div><div><dt>悪化の中心</dt><dd>性格の不一致</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「性格が正反対で喧嘩が少しずつ多くなっていって」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫の貯金の使い込みと借金が発覚 語り手 既婚女性（40代・神奈川県・子ども2人） 悪化の中心 夫の使い込みと借金 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 157</span>
+    <span class="case-title">夫の貯金の使い込みと借金が発覚</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（40代・神奈川県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>夫の使い込みと借金</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫の貯金の使い込み、借金が発覚」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="夫の仕事が続かず愛想が尽きた 語り手 既婚女性（30代・東京都・子ども1人） 悪化の中心 夫が仕事を続けられないこと domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 158</span>
+    <span class="case-title">夫の仕事が続かず愛想が尽きた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・東京都・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>夫が仕事を続けられないこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「夫の仕事がまったく続かず愛想が尽きた」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="敷地内別居により気持ちも離れた 語り手 既婚女性（30代・静岡県・子ども1人） 悪化の中心 敷地内別居 domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 159</span>
+    <span class="case-title">敷地内別居により気持ちも離れた</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・静岡県・子ども1人）</dd></div><div><dt>悪化の中心</dt><dd>敷地内別居</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「敷地内別居により、気持ちも離れたから」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="話しかけても全く聞く耳をもたない夫 語り手 既婚女性（30代・福岡県・子ども2人） 悪化の中心 夫が聞く耳を持たないこと domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」">
+  <summary>
+    <span class="case-id">事例 160</span>
+    <span class="case-title">話しかけても全く聞く耳をもたない夫</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>既婚女性（30代・福岡県・子ども2人）</dd></div><div><dt>悪化の中心</dt><dd>夫が聞く耳を持たないこと</dd></div></dl>
+    <div class="narrative"><h4>語られた内容</h4>
+<p>「私が話しかけても、全く聞く耳をもたず頷きもしない」</p></div>
+    <p class="source"><span>出典</span> <a href="https://domani.shogakukan.co.jp/303524" target="_blank" rel="noreferrer">Domani「既婚女性100名のうち『自分たちは仮面夫婦』と答えた人は2割！ その理由と原因は？」</a> <small>（取得 2026-08-09）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="再構築2年後に同じ相手と続いていて離婚 あの2年は無駄だった 語り手 妻 悪化の中心 夫の浮気の継続（再構築後も同じ相手と） 試したこと 修復を断念し離婚へ 記録上の結末 希望条件で離婚成立 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 024</span>
+    <span class="case-title">再構築2年後に同じ相手と続いていて離婚 あの2年は無駄だった</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫の浮気の継続（再構築後も同じ相手と）</dd></div><div><dt>試したこと</dt><dd>修復を断念し離婚へ</dd></div><div><dt>記録上の結末</dt><dd>希望条件で離婚成立</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>再構築を選んだが、2年後に同じ相手と関係が続いていたことが発覚。</p>
+<h4>やったこと</h4>
+<p>離婚を決意し、証拠を集め、財産分与を徹底的に調べた。</p>
+<h4>結果</h4>
+<p>希望通りの条件で離婚が成立。ただし「再構築の2年間は無駄だった」と感じている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="父のお前の人生がもったいないの一言で離婚に踏み切った妻 語り手 妻 悪化の中心 夫が浮気相手と完全に切れていなかった 試したこと （修復せず）離婚 記録上の結末 離婚し子どもと穏やかに生活 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 025</span>
+    <span class="case-title">父のお前の人生がもったいないの一言で離婚に踏み切った妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫が浮気相手と完全に切れていなかった</dd></div><div><dt>試したこと</dt><dd>（修復せず）離婚</dd></div><div><dt>記録上の結末</dt><dd>離婚し子どもと穏やかに生活</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>再構築を選んだが、夫は浮気相手と完全には切れていなかった。</p>
+<h4>転機</h4>
+<p>父親から「お前のこれからの人生がもったいない」と言われたことが後押しになり、離婚を決断した。</p>
+<h4>結果</h4>
+<p>現在は子どもと穏やかに生活している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="誰の金で生活できていると思っているんだ 15年別居して娘の成人前に離婚 語り手 a子さん（49歳） 家族 長女あり 悪化の中心 夫のモラハラと経済的支配 試したこと （修復せず）妻の就労による経済的自立と別居 記録上の結末 15年の別居を経て離婚・後悔なし oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」">
+  <summary>
+    <span class="case-id">事例 045</span>
+    <span class="case-title">誰の金で生活できていると思っているんだ 15年別居して娘の成人前に離婚</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>A子さん（49歳）</dd></div><div><dt>家族</dt><dd>長女あり</dd></div><div><dt>悪化の中心</dt><dd>夫のモラハラと経済的支配</dd></div><div><dt>試したこと</dt><dd>（修復せず）妻の就労による経済的自立と別居</dd></div><div><dt>記録上の結末</dt><dd>15年の別居を経て離婚・後悔なし</dd></div></dl>
+    <div class="narrative"><h4>モラハラの具体的内容</h4>
+<p>外面は良いが家庭内では自分勝手。妻に生活費を最低限しか渡さず、「誰の金で生活できていると思っているんだ」と経済的な優位を主張した。</p>
+<h4>悪化の経緯</h4>
+<p>結婚直後から始まり、長女出産後にむしろ激化。夫は金遣いが荒く、生活は困窮した。</p>
+<h4>やったこと</h4>
+<p>1. 夫の反対を予想して秘密裏に就職活動 2. 正社員として就職を決定 3. 娘を連れて実家近くに別居（夫は反対したが、妻が経済力を得たことで支配力を失うことを恐れた） 4. 別居15年間、夫からの生活費・教育費はなし。義両親の援助を受けて生活 5. 娘の成人直前に離婚成立</p>
+<h4>後悔の有無</h4>
+<p>後悔なし。ただし「両親揃った環境で育ててあげられなかった娘への責任感がある」。結婚前にモラハラの兆候に気づきながら過信した自分の落ち度も認識している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://oggi.jp/6715200" target="_blank" rel="noreferrer">Oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="欠点をエクセル表に書き連ねる夫 海外赴任中にノイローゼになり帰国後に脱出 語り手 b香さん（51歳） 家族 子どもあり 悪化の中心 夫のモラハラと浮気（海外赴任中に本性が露出） 試したこと （修復せず）証拠収集と計画的な家出 記録上の結末 離婚・独立して起業／後悔なし oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」">
+  <summary>
+    <span class="case-id">事例 046</span>
+    <span class="case-title">欠点をエクセル表に書き連ねる夫 海外赴任中にノイローゼになり帰国後に脱出</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>B香さん（51歳）</dd></div><div><dt>家族</dt><dd>子どもあり</dd></div><div><dt>悪化の中心</dt><dd>夫のモラハラと浮気（海外赴任中に本性が露出）</dd></div><div><dt>試したこと</dt><dd>（修復せず）証拠収集と計画的な家出</dd></div><div><dt>記録上の結末</dt><dd>離婚・独立して起業／後悔なし</dd></div></dl>
+    <div class="narrative"><h4>モラハラの具体的内容</h4>
+<p>言葉と態度によるモラハラ。妻の欠点を「エクセルシート表にびっしりと」書き連ねて提示する。電話やメールでも継続的に心理的虐待を行った。加えて浮気。</p>
+<h4>悪化の経緯</h4>
+<p>結婚当初は甲斐甲斐しかった夫が、海外赴任中に本性を現す。駐在妻として土地に不慣れなまま育児とモラハラが重なり、ノイローゼ状態に陥った。帰国後も直接的なモラハラが再発。</p>
+<h4>やったこと</h4>
+<p>1. 夫の浮気を発見し、証拠を秘密裏に収集 2. 夫の仕事中に「必要最低限の荷物を持って家を出た」 3. 実家に一時身を寄せるが親との関係が悪いため、秘密資金で家を借りた 4. 弁護士に相談して離婚を申し出 5. 浮気とモラハラの証拠により夫が離婚に承諾</p>
+<h4>その後</h4>
+<p>経済的に困窮したが、不動産事務職を経てカフェ立ち上げに携わり、製菓業で独立。現在はお菓子の製造販売で起業している。</p>
+<h4>後悔の有無</h4>
+<p>「離婚に後悔？ 全くありません」。地獄のような日々から逃れ、子どもとの穏やかな生活と自分のやりたい仕事ができているため。</p></div>
+    <p class="source"><span>出典</span> <a href="https://oggi.jp/6715200" target="_blank" rel="noreferrer">Oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="国際結婚 妻の昇進で豹変しクレジットカードで無断購入された車が決定打 語り手 c美さん（42歳） 家族 娘あり／米国在住だった 悪化の中心 夫のモラハラ・金銭的dv・暴力・育児放棄 試したこと （修復せず）帰国 記録上の結末 離婚・日本で生活／後悔なし oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」">
+  <summary>
+    <span class="case-id">事例 047</span>
+    <span class="case-title">国際結婚 妻の昇進で豹変しクレジットカードで無断購入された車が決定打</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>C美さん（42歳）</dd></div><div><dt>家族</dt><dd>娘あり／米国在住だった</dd></div><div><dt>悪化の中心</dt><dd>夫のモラハラ・金銭的DV・暴力・育児放棄</dd></div><div><dt>試したこと</dt><dd>（修復せず）帰国</dd></div><div><dt>記録上の結末</dt><dd>離婚・日本で生活／後悔なし</dd></div></dl>
+    <div class="narrative"><h4>モラハラ・DVの内容</h4>
+<p>暴言と逆ギレ、身体的暴力、家事・育児の放棄、そして金銭的DV（妻のクレジットカードでの無断購入）。</p>
+<h4>悪化の経緯</h4>
+<p>国際結婚で米国在住。当初は甲斐甲斐しかった夫が、C美さんの昇進に伴い豹変。医師志望を名目に学業を続けると言いながら実際には勉強せず、金遣いが荒くなり外泊を繰り返すようになった。決定打は「妻のクレジットカードで無断購入した車」。</p>
+<h4>やったこと</h4>
+<p>購入した自宅を売却し、子どもを連れて日本に帰国。夫が使い込んだ金銭は返済されていない。</p>
+<h4>後悔の有無</h4>
+<p>後悔なし。「娘が日本の学校でのびのび育っている」「自分の英語スキルで就職も容易」「日本は安全」。ただし子どもが父親に会いたがるため、将来的な渡米を検討せねばならない課題は残る。</p></div>
+    <p class="source"><span>出典</span> <a href="https://oggi.jp/6715200" target="_blank" rel="noreferrer">Oggi.jp「モラハラ夫と離婚したら後悔する？ しない？ 実体験者3人が語るには…」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="子どもの経済負担を避けるため再構築し熟年離婚に備えて貯金 語り手 妻 悪化の中心 夫の不倫 試したこと （経済的合理性による）婚姻継続 記録上の結末 将来の離婚を準備中 たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」">
+  <summary>
+    <span class="case-id">事例 027</span>
+    <span class="case-title">子どもの経済負担を避けるため再構築し熟年離婚に備えて貯金</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫</dd></div><div><dt>試したこと</dt><dd>（経済的合理性による）婚姻継続</dd></div><div><dt>記録上の結末</dt><dd>将来の離婚を準備中</dd></div></dl>
+    <div class="narrative"><h4>心境と行動</h4>
+<p>許していない。子どもに経済的な負担をかけたくないため再構築を選択した。コツコツお金を貯め、熟年離婚に備えている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://st.benesse.ne.jp/ikuji/content/?id=104890" target="_blank" rel="noreferrer">たまひよ「夫の不倫が発覚後『再構築したいのに許せない』という悩みに、ママたちの声」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="再構築3年弱で破綻 顔を見るたび浮気を思い出して体調を崩す 語り手 妻 悪化の中心 配偶者の不倫 試したこと （再構築を試みたが失敗） 記録上の結末 3年弱で破綻・体調を崩す npo法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」">
+  <summary>
+    <span class="case-id">事例 043</span>
+    <span class="case-title">再構築3年弱で破綻 顔を見るたび浮気を思い出して体調を崩す</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻</dd></div><div><dt>悪化の中心</dt><dd>配偶者の不倫</dd></div><div><dt>試したこと</dt><dd>（再構築を試みたが失敗）</dd></div><div><dt>記録上の結末</dt><dd>3年弱で破綻・体調を崩す</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>再構築を決断したが「再構築してから三年弱でダメになった」。</p>
+<h4>理由</h4>
+<p>「自分を一度裏切った人をまた信じる事ができない」「夫の顔を見る度に浮気を思い出してしまう」。結果として体調を崩した。</p></div>
+    <p class="source"><span>出典</span> <a href="https://npoyotuba.com/topics/affair-reconstruction.html" target="_blank" rel="noreferrer">NPO法人よつば「夫や妻が不倫。夫婦関係を再構築するか離婚するか？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="義母を10年介護した妻が葬儀直後に離婚と財産分与を要求した60代夫婦 語り手 夫（60代男性） 家族 60代夫婦 悪化の中心 妻による義母（妻の母）の10年間の介護と、その負担への蓄積した不満 試したこと （未解決） 記録上の結末 別居継続・離婚協議中 yahoo!知恵袋「60代男性です。介護の終わった妻から離婚を突き付けられました」">
+  <summary>
+    <span class="case-id">事例 085</span>
+    <span class="case-title">義母を10年介護した妻が葬儀直後に離婚と財産分与を要求した60代夫婦</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>夫（60代男性）</dd></div><div><dt>家族</dt><dd>60代夫婦</dd></div><div><dt>悪化の中心</dt><dd>妻による義母（妻の母）の10年間の介護と、その負担への蓄積した不満</dd></div><div><dt>試したこと</dt><dd>（未解決）</dd></div><div><dt>記録上の結末</dt><dd>別居継続・離婚協議中</dd></div></dl>
+    <div class="narrative"><h4>経緯</h4>
+<p>認知症の義母を約10年間介護した妻が、葬儀の直後に離婚と数千万円の財産分与を要求した。妻の言い分は「介護に疲れたので、これからは自由にさせてほしい」。葬儀後は実家から戻らず別居状態が続いている。夫は離婚を望まず、妻の不倫の可能性を疑っている。</p>
+<h4>回答者たちの反応</h4>
+<ul><li>ベストアンサー：「10年の介護は大変。今度はあなたが妻に楽をさせてあげてはどうか。話し合いで離婚回避を」</li><li>別の回答者：「妻の不倫を疑い財産分与の減額を狙う姿勢は姑息。妻を送り出すのが愛情では」</li></ul>
+<h4>その後の質問者の返信</h4>
+<p>実は妻が以前から嫌気がさしていたこと、妻の昔の浮気歴や幼馴染との接触を疑っていることを明かし、財産分与2500万円程度での妥協を検討している。</p></div>
+    <p class="source"><span>出典</span> <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10266985875" target="_blank" rel="noreferrer">Yahoo!知恵袋「60代男性です。介護の終わった妻から離婚を突き付けられました」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="話し合うと疲弊するだけの冷戦状態 夫が手配したカウンセリングを不信感のまま受ける妻 語り手 妻（note筆者りなぱん） 悪化の中心 話し合いが意見の衝突にしかならず、冷戦状態に 試したこと 夫婦カウンセリング（夫が手配） 記録上の結末 記事の続きは有料部分のため未確認（筆者は「元夫」と表記しており、最終的に離婚した可能性が高い） note「【離婚】”夫婦関係のカウンセリング”って？実際どうなの？」">
+  <summary>
+    <span class="case-id">事例 089</span>
+    <span class="case-title">話し合うと疲弊するだけの冷戦状態 夫が手配したカウンセリングを不信感のまま受ける妻</span>
+    <span class="status">回復しなかった</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>妻（note筆者りなぱん）</dd></div><div><dt>悪化の中心</dt><dd>話し合いが意見の衝突にしかならず、冷戦状態に</dd></div><div><dt>試したこと</dt><dd>夫婦カウンセリング（夫が手配）</dd></div><div><dt>記録上の結末</dt><dd>記事の続きは有料部分のため未確認（筆者は「元夫」と表記しており、最終的に離婚した可能性が高い）</dd></div></dl>
+    <div class="narrative"><h4>悪化の状況</h4>
+<p>二人で話し合っても「意見がぶつかるだけで何の解決もせず、お互い疲弊」し、冷戦状態に陥っていた。筆者は職場で家庭の問題を隠しており、決算発表の時期にストレスで疲労困憊していた。</p>
+<h4>カウンセリング開始時</h4>
+<p>元夫がカウンセラーを手配。初回はZoomで、「会話の様子は録画しますがよろしいですか？」と同意を求められ、カウンセラーの自己紹介とヒアリングが行われた。筆者の心は「《不信感》でいっぱい」だった。</p></div>
+    <p class="source"><span>出典</span> <a href="https://note.com/rinapan365days/n/n31a164ccefa7" target="_blank" rel="noreferrer">note「【離婚】”夫婦関係のカウンセリング”って？実際どうなの？」</a> <small>（取得 2026-08-08）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="回復した夫との再構築を望んだが別居後に離婚した元妻 語り手 元妻（年代不明） 家族 娘3人 悪化の中心 元夫のギャンブルによる借金、不倫、帰宅しない生活 試したこと 自助グループへ参加し再構築を希望したが断念 記録上の結末 離婚 全国ギャンブル依存症家族の会「体験談（令和4年8月掲載）」no.10">
+  <summary>
+    <span class="case-id">事例 165</span>
+    <span class="case-title">回復した夫との再構築を望んだが別居後に離婚した元妻</span>
+    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>元妻（年代不明）</dd></div><div><dt>家族</dt><dd>娘3人</dd></div><div><dt>悪化の中心</dt><dd>元夫のギャンブルによる借金、不倫、帰宅しない生活</dd></div><div><dt>試したこと</dt><dd>自助グループへ参加し再構築を希望したが断念</dd></div><div><dt>記録上の結末</dt><dd>離婚</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>結婚生活13年の間に夫の借金が膨らみ、夫は帰宅せず不倫相手へ金を使っていた。妻は高校生、中学生、小学生の娘3人を育てながら、借金返済と生活への不安を抱えていた。</p>
+<h4>やったこと</h4>
+<p>妻は自助グループにつながり、当初は回復した夫と家庭を再構築することを望んだ。支援者の提案で別居し、仕事を見つけ、弁護士を探し、婚姻費用請求の調停、新居への転居、子どもの転校を進めた。</p>
+<h4>結果</h4>
+<p>離婚が成立した。語り手は離婚後もしばらく悲しみ、再構築している参加者を妬ましく思ったと述べている。その後、自分の回復の場として自助グループを立ち上げた。</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.ncasa-japan.jp/pdf/document61.pdf" target="_blank" rel="noreferrer">全国ギャンブル依存症家族の会「体験談（令和4年8月掲載）」No.10</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="再発時は離婚の誓約後に数百万円を借り再発し離婚 語り手 元夫（40代） 家族 元妻、子ども2人 悪化の中心 競馬による借金の反復 試したこと 両家面談、誓約書、利用制限を試したが再発 記録上の結末 離婚 全国ギャンブル依存症家族の会「体験談（令和4年9月掲載）」no.3">
+  <summary>
+    <span class="case-id">事例 166</span>
+    <span class="case-title">再発時は離婚の誓約後に数百万円を借り再発し離婚</span>
+    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>元夫（40代）</dd></div><div><dt>家族</dt><dd>元妻、子ども2人</dd></div><div><dt>悪化の中心</dt><dd>競馬による借金の反復</dd></div><div><dt>試したこと</dt><dd>両家面談、誓約書、利用制限を試したが再発</dd></div><div><dt>記録上の結末</dt><dd>離婚</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>結婚後も競馬と借金が止まらず、親による返済の肩代わりを繰り返した。両家の面談で、再びギャンブルをしたら離婚し親権を妻へ渡すこと、携帯電話へ利用制限をかけることを取り決め、誓約書を書いた。</p>
+<h4>やったこと</h4>
+<p>誓約後は半年間ギャンブルを止めたが、一度再開すると短期間で数百万円の借金を作った。第二子を妊娠中の妻へ告白した。</p>
+<h4>結果</h4>
+<p>妻は子どもを連れて実家へ帰り、離婚した。元夫はその後、自助グループへ通い、8年半ギャンブルを止め、養育費を払いながら子どもと定期的に面会しているが、夫婦関係は終わっている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.ncasa-japan.jp/pdf/document62.pdf" target="_blank" rel="noreferrer">全国ギャンブル依存症家族の会「体験談（令和4年9月掲載）」No.3</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="借金で離婚後に再婚したが再発し再び離婚 語り手 元妻（50代） 家族 元夫、子ども2人 悪化の中心 元夫のパチンコと借金の反復 試したこと 一度離婚後に再婚し、受診と自助グループも試したが再発 記録上の結末 再離婚 全国ギャンブル依存症家族の会「体験談（令和4年9月掲載）」no.4">
+  <summary>
+    <span class="case-id">事例 167</span>
+    <span class="case-title">借金で離婚後に再婚したが再発し再び離婚</span>
+    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>元妻（50代）</dd></div><div><dt>家族</dt><dd>元夫、子ども2人</dd></div><div><dt>悪化の中心</dt><dd>元夫のパチンコと借金の反復</dd></div><div><dt>試したこと</dt><dd>一度離婚後に再婚し、受診と自助グループも試したが再発</dd></div><div><dt>記録上の結末</dt><dd>再離婚</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>結婚当初から夫は毎日パチンコ店へ寄り、結婚4年目に多額の借金が発覚した。妻は子ども2人を連れて離婚したが、2年後、元来は優しい人だった夫と再婚した。</p>
+<h4>やったこと</h4>
+<p>再婚後もパチンコと借金は止まらなかった。心療内科を受診し、夫は当事者向け、妻は家族向けの自助グループへ通った。妻は問題が起きるたびに自助グループや支援団体へ相談した。</p>
+<h4>結果</h4>
+<p>その後も借金が再発した。2人で話し合って再び離婚を選び、語り手は離婚後の家族4人が最も笑顔でいられる状態だと述べている。元夫婦はそれぞれ自助グループへ通い続けている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://www.ncasa-japan.jp/pdf/document62.pdf" target="_blank" rel="noreferrer">全国ギャンブル依存症家族の会「体験談（令和4年9月掲載）」No.4</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details>
+
+<details class="case not-recovered" data-search="一度は再構築したが不倫相手と切れておらず離婚 語り手 元妻（アラフォー、パート勤務） 家族 元夫、小学生の娘 悪化の中心 夫の不倫 試したこと 一度は再構築を選択したが不倫が継続 記録上の結末 離婚 amebaブログ「サレ妻の再構築から離婚に至るまで」">
+  <summary>
+    <span class="case-id">事例 168</span>
+    <span class="case-title">一度は再構築したが不倫相手と切れておらず離婚</span>
+    <span class="status">回復しなかった</span><span class="new">追加調査</span>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="case-content">
+    <dl class="case-meta"><div><dt>語り手</dt><dd>元妻（アラフォー、パート勤務）</dd></div><div><dt>家族</dt><dd>元夫、小学生の娘</dd></div><div><dt>悪化の中心</dt><dd>夫の不倫</dd></div><div><dt>試したこと</dt><dd>一度は再構築を選択したが不倫が継続</dd></div><div><dt>記録上の結末</dt><dd>離婚</dd></div></dl>
+    <div class="narrative"><h4>状況</h4>
+<p>最も信頼していた夫の不倫が発覚した。妻は一度目の発覚時に夫婦関係の再構築を選んだ。</p>
+<h4>やったこと</h4>
+<p>再構築を進めたが、夫が不倫相手と別れていなかったことが判明した。妻は離婚協議へ進み、公正証書を作成し、不倫相手への慰謝料請求も行った。</p>
+<h4>結果</h4>
+<p>離婚が成立した。ブログ執筆時点で元夫とは互いに無関心になり、娘と元夫の面会交流に必要な連絡をする関係になっている。</p></div>
+    <p class="source"><span>出典</span> <a href="https://ameblo.jp/sekasin/entry-12854667223.html" target="_blank" rel="noreferrer">Amebaブログ「サレ妻の再構築から離婚に至るまで」</a> <small>（取得 2026-08-11）</small></p>
+  </div>
+</details></div>
+</section>
+  <p id="empty" class="empty">一致する事例はありません。</p>
+</main>
+<footer>各記録は夫婦の片側の自己申告または取材・自由回答を要約したもので、相手方による確認はありません。2026年8月11日再編集。</footer>
+<script>
+  document.querySelectorAll('.case-list').forEach((list) => {
+    [...list.children]
+      .sort((left, right) => left.querySelector('.case-id').textContent.localeCompare(right.querySelector('.case-id').textContent))
+      .forEach((item) => list.append(item));
+  });
+  const cases = [...document.querySelectorAll('.case')];
+  const search = document.querySelector('#search');
+  const empty = document.querySelector('#empty');
+  function filterCases() {
+    const query = search.value.trim().toLowerCase();
+    let visible = 0;
+    cases.forEach((item) => {
+      const show = !query || item.dataset.search.includes(query);
+      item.classList.toggle('hidden', !show);
+      if (show) visible += 1;
+    });
+    document.querySelectorAll('.outcome-section').forEach((section) => {
+      const shown = section.querySelectorAll('.case:not(.hidden)').length;
+      const count = section.querySelector('.count');
+      count.textContent = query ? shown + '件表示' : count.dataset.total + '件';
+      section.classList.toggle('hidden', query && shown === 0);
+    });
+    empty.style.display = visible ? 'none' : 'block';
+  }
+  search.addEventListener('input', filterCases);
+  document.querySelector('#open-all').addEventListener('click', () => cases.filter((item) => !item.classList.contains('hidden')).forEach((item) => item.open = true));
+  document.querySelector('#close-all').addEventListener('click', () => cases.forEach((item) => item.open = false));
+</script>
+</body>
+</html>
