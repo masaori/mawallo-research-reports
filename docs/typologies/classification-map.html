@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>人間を分類する方法論 — 57件・5軸の外観</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar"><div class="shell">
+    <a class="brand" href="index.html">夫婦支援の理論・尺度</a>
+    <nav class="nav" aria-label="レポート一覧">
+      <a href="report.html">全65件</a>
+      <a href="classification-map.html" aria-current="page">分類方法</a>
+      <a href="01-vulnerability-stress-adaptation.html">全体地図</a>
+      <a href="02-dyadic-coping.html">共同対処</a>
+      <a href="03-demand-withdraw.html">要求―撤退</a>
+      <a href="04-adult-attachment.html">成人愛着</a>
+      <a href="05-family-assessment-device.html">家族機能</a>
+      <a href="06-gottman-conflict-types.html">葛藤スタイル</a>
+    </nav>
+  </div></div>
+
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">Classification landscape / evidence level 1–3</p>
+      <h1>世の中は、人間をどのように分類しているか</h1>
+      <p class="lede">反証・再現不能として不採用にしたレベル4を除き、57件の理論・尺度・調査を5つの軸で見渡す。名称の違いよりも、「誰を」「何について」「どう型にし」「何から測り」「どんな形で返すか」という方法論の違いを可視化した。</p>
+      <div class="meta"><span class="pill">対象57件</span><span class="level level-1">レベル1・6件</span><span class="level level-2">レベル2・25件</span><span class="level level-3">レベル3・26件</span><span class="pill">分類軸5つ</span></div>
+    </header>
+
+    <nav id="toc" class="report-toc" aria-label="レポート目次">
+      <h2>目次</h2>
+      <ul>
+        <li><a href="#axis-unit">分類軸1：誰を分類するか</a></li>
+        <li><a href="#axis-focus">分類軸2：何を分類するか</a></li>
+        <li><a href="#axis-construction">分類軸3：どう型を作るか</a></li>
+        <li><a href="#axis-input">分類軸4：何から判定するか</a></li>
+        <li><a href="#axis-output">分類軸5：何を結果として返すか</a></li>
+        <li><a href="#methods">57件の個別説明一覧</a></li>
+      </ul>
+    </nav>
+
+    <section id="axes" aria-labelledby="axes-title">
+      <h2 id="axes-title">5つの分類軸</h2>
+      <p>各円の全体を57件として、分類ごとの割合を示す。件数と百分率は凡例に併記した。各グラフ直下の分類表は、表全体が初期状態では閉じている。</p>
+      <div id="axis-root"></div>
+      <noscript><p class="callout warning">このページのグラフと分類表の表示にはJavaScriptが必要です。</p></noscript>
+    </section>
+
+    <section id="methods" aria-labelledby="methods-title">
+      <h2 id="methods-title">57件の個別説明</h2>
+      <p>エビデンスレベル1→2→3の順に区切り、各レベル内は「個人 → カップル／夫婦 → 家族／親子 → 人口集団／国」の順、同じ分類単位内は名称順で並べた。分類表の名称を選ぶと該当行へ移動する。</p>
+      <div id="method-root"></div>
+    </section>
+
+    <footer class="footer"><a href="report.html">4段階エビデンスによる全65件の集計</a> ／ <a href="index.html">支援設計に使う6本のレポート</a></footer>
+  </main>
+
+  <script>
+    const methods = [
+      {id:'demand-withdraw',name:'要求―撤退パターン',level:1,unit:'couple',focus:'interaction',construction:'continuous',input:'multi',output:'configuration',summary:'一方の要求と他方の撤退が相互に増幅する循環を、頻度得点または観察で捉える。',limit:'人格型ではなく、話題や権力差で役割が反転する動的パターン。'},
+      {id:'dyadic-coping',name:'二者間コーピング（DCI）',level:1,unit:'couple',focus:'interaction',construction:'continuous',input:'multi',output:'configuration',summary:'ストレス伝達、支持、共同対処、否定的対処を本人・相手・二人の視点で測る。',limit:'尺度との関連が強くても、介入すれば必ず改善するとは限らない。'},
+      {id:'parenting-styles',name:'養育スタイル4類型',level:1,unit:'family',focus:'family',construction:'threshold',input:'multi',output:'fixed',summary:'養育の応答性と要求性を組み合わせ、代表的な4スタイルとして記述する。',limit:'文化や回答者で結果が変わるため、2次元を4型へ固定しないほうが安全。'},
+      {id:'strange-situation',name:'ストレンジ・シチュエーション法',level:1,unit:'family',focus:'family',construction:'observed',input:'observation',output:'fixed',summary:'乳児の分離・再会場面を標準化し、訓練された評定者が行動を分類する。',limit:'乳児向けの観察法であり、成人夫婦の愛着診断ではない。'},
+      {id:'issp',name:'ISSP「家族と変わるジェンダー役割」',level:1,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'共通設問を用いて、国・時点ごとの家族観と性役割態度を比較する。',limit:'集団の背景資料であり、個人へ国別タイプを付ける道具ではない。'},
+      {id:'big-five',name:'Big Fiveと関係満足度',level:1,unit:'individual',focus:'trait',construction:'continuous',input:'single',output:'profile',summary:'5つの性格特性を連続得点で測り、本人・相手の関係指標との関連を分析する。',limit:'性格の類似性を相性タイプへ変換する根拠は一貫しない。'},
+
+      {id:'pbi',name:'PBI日本版',level:2,unit:'family',focus:'family',construction:'threshold',input:'single',output:'profile',summary:'本人が回顧した親の養育を、careとoverprotectionの2軸で表す。',limit:'親の客観的行動ではなく、本人の回顧認知を測っている。'},
+      {id:'ecr',name:'成人愛着尺度 ECR 日本語版',level:2,unit:'individual',focus:'trait',construction:'continuous',input:'single',output:'profile',summary:'親密な関係での不安と回避を、2つの連続得点として測る。',limit:'高低で4型へ分割すると、境界付近の情報を失う。'},
+      {id:'couple-satisfaction-jp',name:'夫婦満足度・親密性の類型的研究',level:2,unit:'couple',focus:'relationship',construction:'continuous',input:'multi',output:'configuration',summary:'夫婦双方の満足度・親密性を測り、平均と二者間の差を分析する。',limit:'片側回答だけでは、夫婦全体の状態を確定できない。'},
+      {id:'nfrj',name:'NFRJ 全国家族調査',level:2,unit:'population',focus:'family',construction:'external',input:'survey',output:'context',summary:'全国確率標本から、日本の家族関係・役割・親族関係の分布を捉える。',limit:'二次分析で群を作れても、個人向け診断ではない。'},
+      {id:'fertility-survey',name:'出生動向基本調査・夫婦調査',level:2,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'就業、役割分担、出生希望などを全国標本で記述する。',limit:'夫婦調査の回答者が妻であるという測定範囲を外せない。'},
+      {id:'adult-longitudinal',name:'21世紀成年者縦断調査',level:2,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'家事育児時間、就業、結婚、出生などを同一対象で経時追跡する。',limit:'集団の縦断関連から、個別夫婦の因果を直接決めない。'},
+      {id:'jgss',name:'JGSS 日本版総合的社会調査',level:2,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'家族観・性別役割意識などを全国標本で反復測定する。',limit:'研究者の潜在クラスをそのまま個人タイプへ転用しない。'},
+      {id:'gender-whitepaper',name:'男女共同参画白書・世論調査',level:2,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'家事・育児・介護時間と性役割意識を、属性別の集団統計として示す。',limit:'集団差は、目の前の個人の行動を説明しきらない。'},
+      {id:'jpsc',name:'JPSC 消費生活に関するパネル調査',level:2,unit:'population',focus:'relationship',construction:'continuous',input:'survey',output:'context',summary:'女性回答者の生活・就業・夫婦満足度を継続的に追跡する。',limit:'女性側の回答という標本設計を越えて夫婦全体を断定しない。'},
+      {id:'gottman',name:'Gottman 夫婦葛藤類型',level:2,unit:'couple',focus:'interaction',construction:'observed',input:'observation',output:'fixed',summary:'葛藤会話の観察から、回避・妥当化・激動など異なる相互作用形を記述する。',limit:'高精度な離婚予測器としての一般化は支持されない。'},
+      {id:'fitzpatrick',name:'Fitzpatrick 夫婦類型（RDI）',level:2,unit:'couple',focus:'relationship',construction:'threshold',input:'multi',output:'configuration',summary:'夫婦双方の関係観と役割観を測り、二人の型の組み合わせを得る。',limit:'原版は長く、夫婦の片方だけでは配置が決まらない。'},
+      {id:'family-communication',name:'家族コミュニケーションパターン',level:2,unit:'family',focus:'interaction',construction:'threshold',input:'multi',output:'fixed',summary:'会話志向と同調志向の2得点を組み合わせ、家族の会話環境を記述する。',limit:'親版と子版で見え方が変わり、4型はカットオフ依存。'},
+      {id:'love-attitudes',name:'愛情スタイル尺度（LAS）',level:2,unit:'individual',focus:'relationship',construction:'threshold',input:'single',output:'profile',summary:'ErosやLudusなど複数の愛情態度を尺度別に測る。',limit:'6尺度は排他的ではなく、最高得点だけを本人の型にしない。'},
+      {id:'attachment-four',name:'成人愛着4類型',level:2,unit:'individual',focus:'trait',construction:'threshold',input:'single',output:'fixed',summary:'自己観と他者観の組み合わせから、成人愛着を4つの記述へ整理する。',limit:'質問紙と面接の一致は完全でなく、連続尺度のほうが情報量が多い。'},
+      {id:'meta-emotion',name:'メタ感情哲学',level:2,unit:'family',focus:'interaction',construction:'observed',input:'observation',output:'fixed',summary:'親への面接から、子どもの感情をコーチするか退けるかを評定する。',limit:'訓練を要し、親を善悪の2型に固定する用途ではない。'},
+      {id:'beavers',name:'Beavers Systems Model',level:2,unit:'family',focus:'family',construction:'observed',input:'observation',output:'profile',summary:'家族の機能度と相互作用スタイルを、観察と自己記入の両面から評価する。',limit:'観察結果と自己報告は必ずしも一致しない。'},
+      {id:'mcmaster',name:'McMaster Model（FAD）',level:2,unit:'family',focus:'family',construction:'continuous',input:'multi',output:'profile',summary:'問題解決、役割、感情、行動統制などを家族機能の多次元プロフィールとして測る。',limit:'健康・不健康の判定は介入効果そのものを意味しない。'},
+      {id:'gender-latent',name:'ジェンダーイデオロギーの潜在クラス',level:2,unit:'population',focus:'role',construction:'cluster',input:'secondary',output:'research',summary:'多数の態度回答から、統計モデルで複数のジェンダー観の群を抽出する。',limit:'クラス数は分析判断を含み、個人向け診断ではない。'},
+      {id:'gender-europe',name:'欧州のジェンダーイデオロギー5プロファイル',level:2,unit:'population',focus:'role',construction:'cluster',input:'secondary',output:'research',summary:'欧州調査から、就労平等と母親中心育児が併存する群などを抽出する。',limit:'特定地域・時点の集団構造で、普遍的な5タイプではない。'},
+      {id:'gender-world',name:'ジェンダー態度の世界分類',level:2,unit:'population',focus:'role',construction:'cluster',input:'secondary',output:'research',summary:'複数指標を用いて、個人ではなく国を単位に態度構造を分類する。',limit:'国レベルの分類を国民一人ひとりへ当てはめない。'},
+      {id:'pew-breadwinner',name:'Pew Breadwinner Wives 調査',level:2,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'夫婦の実収入から稼得構成を区分し、家事・育児時間を比較する。',limit:'米国の集団統計であり、日本の個別夫婦へ直接移植しない。'},
+      {id:'tci',name:'TCI',level:2,unit:'individual',focus:'trait',construction:'continuous',input:'single',output:'profile',summary:'気質4次元と性格3次元を連続得点のプロフィールとして測る。',limit:'7次元の組み合わせを夫婦相性タイプへ丸める根拠はない。'},
+      {id:'sps',name:'感覚処理感受性（HSP）',level:2,unit:'individual',focus:'trait',construction:'continuous',input:'single',output:'profile',summary:'刺激への感受性を、複数下位尺度を含む連続的な個人差として測る。',limit:'上位15〜20%という区切りは便宜的で、自然な二分とは限らない。'},
+      {id:'chronotype',name:'クロノタイプの夫婦間一致',level:2,unit:'couple',focus:'trait',construction:'continuous',input:'multi',output:'configuration',summary:'二人の朝型―夜型得点の差から、生活リズムの一致度を表す。',limit:'実際の睡眠・就労・育児時間のほうが介入対象として直接的。'},
+      {id:'money-scripts',name:'Money Scripts',level:2,unit:'couple',focus:'role',construction:'continuous',input:'multi',output:'configuration',summary:'回避、崇拝、地位、警戒という金銭信念を測り、二人の差を確認する。',limit:'最高得点だけで4型へ固定せず、信念ごとの強さを見る。'},
+
+      {id:'faceskg',name:'家族システム評価尺度 FACESKG',level:3,unit:'family',focus:'family',construction:'threshold',input:'multi',output:'fixed',summary:'「きずな」と「かじとり」の2軸から家族の機能類型を作る。',limit:'標本詳細・独立再現・曲線仮説の強さを公開情報から確定できない。'},
+      {id:'tk-parent-child',name:'TK式 診断的新親子関係検査',level:3,unit:'family',focus:'family',construction:'threshold',input:'multi',output:'fixed',summary:'親子双方の回答を10の養育態度プロフィールへ整理する商用検査。',limit:'標準化標本と妥当性手続きの公開情報が不足。'},
+      {id:'tk-preschool',name:'TK式 幼児用親子関係検査',level:3,unit:'family',focus:'family',construction:'threshold',input:'single',output:'fixed',summary:'保護者回答から幼児期の親子関係を類型化する。',limit:'親側だけの回答で、外的基準と標準化詳細が未確認。'},
+      {id:'teg',name:'東大式エゴグラム TEG',level:3,unit:'individual',focus:'trait',construction:'threshold',input:'single',output:'fixed',summary:'5つの自我状態得点の折れ線形状からプロフィール型を読む。',limit:'型の再現性と標準化標本の公開情報が不足。'},
+      {id:'yg',name:'YG性格検査',level:3,unit:'individual',focus:'trait',construction:'threshold',input:'single',output:'fixed',summary:'12尺度の形状を典型5類型などへ照合する商用性格検査。',limit:'回答歪曲への弱さと、型・標準化の公開情報不足がある。'},
+      {id:'psychological-independence',name:'心理的離乳過程の5段階類型',level:3,unit:'family',focus:'family',construction:'threshold',input:'single',output:'fixed',summary:'青年側の回答から、親子関係の変化を5段階として整理する。',limit:'単一の研究用尺度で、個人診断や夫婦支援への一般化は未検証。'},
+      {id:'midlife-communication',name:'中年期夫婦のコミュニケーション態度',level:3,unit:'couple',focus:'interaction',construction:'continuous',input:'multi',output:'configuration',summary:'夫婦双方の回答から、コミュニケーション態度の性別平均差を分析する。',limit:'単一時点の集団差で、性別から個人行動を決められない。'},
+      {id:'elder-distress',name:'高齢期夫婦のパートナーシップ／ディストレス',level:3,unit:'couple',focus:'relationship',construction:'continuous',input:'single',output:'profile',summary:'高齢期の夫婦間ディストレスを連続得点で測り、背景要因との関連を見る。',limit:'単一報告で、型も介入効果も検証していない。'},
+      {id:'fit-image',name:'FIT 家族イメージ法',level:3,unit:'family',focus:'family',construction:'observed',input:'observation',output:'configuration',summary:'円形シールと線による家族布置を、実施者が関係イメージとして読む。',limit:'投影法的で評定者依存があり、自動判定に向かない。'},
+      {id:'hakuhodo-family',name:'博報堂「家族30年変化」調査',level:3,unit:'population',focus:'role',construction:'external',input:'survey',output:'context',summary:'サラリーマン世帯の夫婦を複数時点で調べ、役割や価値観の変化を比較する。',limit:'抽出法・標本数の公開情報が不足。'},
+      {id:'good-couple-day',name:'明治安田生命「いい夫婦の日」調査',level:3,unit:'population',focus:'relationship',construction:'external',input:'survey',output:'context',summary:'既婚者の円満度や「円満の秘訣」の回答割合を記述する。',limit:'企業アンケートで、回答頻度を介入効果の順位へ変換できない。'},
+      {id:'recruit-partnership',name:'リクルート パートナーシップ調査',level:3,unit:'population',focus:'relationship',construction:'external',input:'survey',output:'context',summary:'インターネット調査で既婚者等の関係実態を記述する。',limit:'型判定手続きと詳細な標本設計が公開情報から未確認。'},
+      {id:'father-housework',name:'父親の家事・育児参加の規定要因',level:3,unit:'population',focus:'role',construction:'continuous',input:'secondary',output:'research',summary:'既存調査を二次分析し、父親の家事育児参加に関連する要因を探る。',limit:'単一分析で、型理論でも介入研究でもない。'},
+      {id:'power-child',name:'夫婦の勢力関係と子どもとの関係',level:3,unit:'population',focus:'role',construction:'continuous',input:'secondary',output:'research',summary:'全国調査の決定権項目から、勢力関係と親子関係の関連を分析する。',limit:'一回の二次分析で、個別家庭の因果を確定しない。'},
+      {id:'enrich-five',name:'ENRICH 5類型',level:3,unit:'couple',focus:'relationship',construction:'cluster',input:'multi',output:'fixed',summary:'夫婦双方の9次元得点をクラスタ分析し、5つの関係群を作る。',limit:'有料受検者標本で、クラスタ数と独立再現に課題。'},
+      {id:'prepare-four',name:'婚前カップル4類型（PREPARE）',level:3,unit:'couple',focus:'relationship',construction:'cluster',input:'multi',output:'fixed',summary:'婚前カップル双方の得点プロフィールから、統計的に4群を作る。',limit:'商用尺度依存で、標本詳細と独立再現が不足。'},
+      {id:'circumplex',name:'Circumplex Model／FACES',level:3,unit:'family',focus:'family',construction:'threshold',input:'multi',output:'fixed',summary:'凝集性と適応性を区切り、家族を16セルへ配置する。',limit:'版ごとに構造が異なり、類型と曲線仮説への支持が一貫しない。'},
+      {id:'cuber-harroff',name:'Cuber & Harroff 5類型',level:3,unit:'couple',focus:'relationship',construction:'observed',input:'observation',output:'fixed',summary:'長時間の質的面接から、夫婦関係を5つの記述類型へ整理した古典。',limit:'尺度・採点表・独立再現がない。'},
+      {id:'bott',name:'Bott 夫婦役割の分離度',level:3,unit:'couple',focus:'role',construction:'observed',input:'observation',output:'fixed',summary:'夫婦の役割と社会ネットワークを質的に調べ、共同型・分離型として記述する。',limit:'1950年代ロンドンの20家族に限られる。'},
+      {id:'blood-wolfe',name:'Blood & Wolfe 夫婦勢力4類型',level:3,unit:'couple',focus:'role',construction:'external',input:'single',output:'fixed',summary:'家庭内の意思決定者を領域別に尋ね、勢力配置を4型へまとめる。',limit:'妻のみへの古典調査で、現代の夫婦双方データが不足。'},
+      {id:'sternberg',name:'愛の三角理論8類型',level:3,unit:'individual',focus:'relationship',construction:'threshold',input:'single',output:'fixed',summary:'親密性・情熱・コミットメントの高低を組み合わせ、8つの愛の形を作る。',limit:'3成分尺度と、閾値で作る8型の妥当性は別問題。'},
+      {id:'strange-japan',name:'ストレンジ・シチュエーション法の日本適用',level:3,unit:'family',focus:'family',construction:'observed',input:'observation',output:'fixed',summary:'原版と同じ観察手続きを日本の乳児と母親へ適用した再現研究。',limit:'60組で回避型0%となり、文化慣行による誤分類可能性を示した。'},
+      {id:'attachment-three',name:'成人愛着3類型',level:3,unit:'individual',focus:'trait',construction:'threshold',input:'single',output:'fixed',summary:'3つの説明文から最も近いものを一つ選び、成人愛着を分類する。',limit:'1項目・自発回答標本で測定精度が低い。'},
+      {id:'kantor-lehr',name:'Kantor & Lehr 家族3類型',level:3,unit:'family',focus:'family',construction:'observed',input:'observation',output:'fixed',summary:'家庭内の時間・空間・エネルギーの使い方を自然観察し、3類型へ整理する。',limit:'標準尺度・判定規則・再現研究が不足。'},
+      {id:'bsri',name:'BSRI 性役割4分類',level:3,unit:'individual',focus:'role',construction:'threshold',input:'single',output:'fixed',summary:'男性性・女性性の自己評定を標本中央値で区切り、4群へ分ける。',limit:'比較標本と時代・文化が変わると同じ人の型も変わりうる。'},
+      {id:'fisher',name:'Fisher Temperament Inventory',level:3,unit:'individual',focus:'trait',construction:'threshold',input:'single',output:'fixed',summary:'4尺度の最高・次点得点から主型・副型を作り、気質を記述する。',limit:'出会い系会員に偏り、ホルモン対応や相性への推論が強すぎる。'}
+    ];
+
+    const axes = [
+      {key:'unit',title:'分類軸1：誰を分類するか',description:'同じ「人間分類」でも、分析単位は個人とは限らない。二人の配置や家族全体、人口集団を対象にする方法がある。',categories:[['individual','個人'],['couple','カップル／夫婦'],['family','家族／親子'],['population','人口集団／国']]},
+      {key:'focus',title:'分類軸2：何を分類するか',description:'対象となる内容を分けると、性格の分類と、会話・役割・家族機能の分類を混同せずに済む。',categories:[['trait','特性・気質・愛着'],['interaction','会話・感情・共同対処'],['relationship','満足度・親密性・関係形'],['role','役割・権力・ジェンダー・金銭'],['family','養育・親子・家族機能']]},
+      {key:'construction',title:'分類軸3：どう型を作るか',description:'型が理論から先に決まるのか、回答データから作られるのか、そもそも型にせず得点を返すのかを区別する。',categories:[['continuous','連続尺度・プロフィール'],['threshold','理論軸＋閾値の組み合わせ'],['cluster','クラスタ／潜在クラス'],['observed','観察・面接による類型'],['external','外部属性・既存区分']]},
+      {key:'input',title:'分類軸4：何から判定するか',description:'誰の回答・どの観測を使うかで、同じ名称の分類でも意味が変わる。',categories:[['single','本人または片側の自己報告'],['multi','夫婦・家族など複数者の回答'],['observation','訓練者の観察・面接'],['survey','大規模調査・行動／属性データ'],['secondary','既存データの二次解析']]},
+      {key:'output',title:'分類軸5：何を結果として返すか',description:'利用者へ固定タイプを返す方法だけでなく、連続プロフィール、二者の差、研究上の群、背景統計だけを返す方法がある。',categories:[['fixed','固定タイプ／段階'],['profile','連続プロフィール'],['configuration','二者・家族の配置や差'],['research','研究上の群・関連'],['context','集団の背景統計のみ']]}
+    ];
+
+    const levelLabel = level => `${level} ${level === 1 ? '再現済み' : level === 2 ? '支持あり' : '予備的'}`;
+    const categoryLabel = (axis, value) => axis.categories.find(([key]) => key === value)[1];
+    const link = method => `<a class="method-link" href="#method-${method.id}">${method.name}</a>`;
+    const palette = ['#79c8aa', '#6fa9cf', '#d5a85f', '#cc7b78', '#9c8bc9'];
+
+    const axisRoot = document.getElementById('axis-root');
+    axes.forEach((axis, axisIndex) => {
+      const counts = axis.categories.map(([key, label]) => ({key, label, items: methods.filter(method => method[axis.key] === key)}));
+      let cursor = 0;
+      const segments = counts.map((category, index) => {
+        const start = cursor;
+        cursor += category.items.length / methods.length * 100;
+        return `${palette[index]} ${start}% ${cursor}%`;
+      });
+      const section = document.createElement('section');
+      section.className = 'axis-block';
+      section.id = `axis-${axis.key}`;
+      section.innerHTML = `
+        <p class="eyebrow">AXIS ${axisIndex + 1}</p>
+        <h3>${axis.title}</h3>
+        <p>${axis.description}</p>
+        <div class="donut-layout" role="img" aria-label="${axis.title}の割合">
+          <div class="donut" style="--segments:conic-gradient(${segments.join(',')})"><span><strong>${methods.length}</strong><small>件</small></span></div>
+          <ul class="donut-legend">
+            ${counts.map((category, index) => `<li><span class="legend-swatch" style="background:${palette[index]}"></span><span>${category.label}</span><strong>${category.items.length}件</strong><span>${(category.items.length / methods.length * 100).toFixed(1)}%</span></li>`).join('')}
+          </ul>
+        </div>
+        <details class="classification-table" id="axis-${axis.key}-table">
+          <summary>分類表全体を開く（57件）</summary>
+          <div class="table-wrap"><table><thead><tr><th>分類</th><th>件数</th><th>割合</th><th>該当する方法</th></tr></thead><tbody>
+            ${counts.map(category => `<tr><td><strong>${category.label}</strong></td><td>${category.items.length}</td><td>${(category.items.length / methods.length * 100).toFixed(1)}%</td><td>${category.items.map(link).join('、')}</td></tr>`).join('')}
+          </tbody></table></div>
+        </details>`;
+      axisRoot.appendChild(section);
+    });
+
+    const methodRoot = document.getElementById('method-root');
+    const unitOrder = {individual:0, couple:1, family:2, population:3};
+    const sortedMethods = [...methods].sort((a, b) => a.level - b.level || unitOrder[a.unit] - unitOrder[b.unit] || a.name.localeCompare(b.name, 'ja'));
+    let lastLevel = 0;
+    const rows = sortedMethods.map(method => {
+      const section = method.level === lastLevel ? '' : `<tr class="level-section"><th colspan="7"><span class="level level-${method.level}">${levelLabel(method.level)}</span> ${methods.filter(item => item.level === method.level).length}件</th></tr>`;
+      lastLevel = method.level;
+      return `${section}<tr id="method-${method.id}" class="method-row">
+        <td><strong>${method.name}</strong><br><a class="sources" href="report.html#level-${method.level}">判定根拠</a></td>
+        <td>${categoryLabel(axes[0], method.unit)}</td>
+        <td>${categoryLabel(axes[1], method.focus)}</td>
+        <td>${categoryLabel(axes[2], method.construction)}</td>
+        <td>${categoryLabel(axes[3], method.input)}</td>
+        <td>${categoryLabel(axes[4], method.output)}</td>
+        <td>${method.summary}<br><span class="sources"><strong>限界：</strong>${method.limit}</span></td>
+      </tr>`;
+    }).join('');
+    methodRoot.innerHTML = `<div class="table-wrap"><table class="method-table"><thead><tr><th>名称</th><th>分類単位</th><th>分類内容</th><th>型の作り方</th><th>判定材料</th><th>出力</th><th>説明と限界</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  </script>
+</body>
+</html>
